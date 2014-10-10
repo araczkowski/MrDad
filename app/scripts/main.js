@@ -27,7 +27,7 @@
      * }
      */
     w.Intervals = function(selector, userOptions) {
-        var _self = this;
+        //var _self = this;
         var _slider;
         var _options = {
             min: 0,
@@ -37,10 +37,10 @@
             newlength: 60,
             disabled: false
         };
-        var _delete_period_confirm = null,
-            _add_period_confirm = null,
-            _on_handle_mouseenter = null,
-            _on_handle_slide = null;
+        var _deletePeriodConfirm = null,
+            _addPeriodConfirm = null,
+            _onHandleMouseenter = null,
+            _onHandleSlide = null;
 
         var SELECTORS = {
             range: {
@@ -133,11 +133,11 @@
                 var index = _slider.find('.' + SELECTORS.handle['class']).index(ui.handle);
 
                 function onSlide() {
-                    if (typeof(_on_handle_slide) === 'function') {
+                    if (typeof(_onHandleSlide) === 'function') {
                         var key = _getPeriodKeyByIndex(index);
                         if (key !== -1) {
                             var edgeIndex = _isLeftHandle(index) ? 0 : 1;
-                            _on_handle_slide($(ui.handle), _periods[key].toPublic(), edgeIndex);
+                            _onHandleSlide($(ui.handle), _periods[key].toPublic(), edgeIndex);
                         }
                     }
                     return true;
@@ -177,19 +177,21 @@
             };
 
             _slider.on('mouseenter', '.' + SELECTORS.handle['class'], function(event) {
-                if (typeof(_on_handle_mouseenter) === 'function') {
+                if (typeof(_onHandleMouseenter) === 'function') {
                     var index = _slider.find('.' + SELECTORS.handle['class']).index($(this));
                     var key = _getPeriodKeyByIndex(index);
                     if (key !== -1) {
                         var edgeIndex = _isLeftHandle(index) ? 0 : 1;
-                        _on_handle_mouseenter($(this), _periods[key].toPublic(), edgeIndex);
+                        _onHandleMouseenter($(this), _periods[key].toPublic(), edgeIndex);
                     }
                 }
             });
         }
 
         function _mergeOptions() {
-            if (!userOptions) return _options;
+            if (!userOptions) {
+                return _options;
+            }
             for (var optionKey in _options) {
                 if (optionKey in userOptions) {
                     switch (typeof _options[optionKey]) {
@@ -309,7 +311,7 @@
          */
         function _getSurroundingPoints(abscissa) {
             if (_getPeriodKeyByInnerPoint(abscissa) !== -1) {
-                throw 'Passed abscissa is within the period'
+                throw 'Passed abscissa is within the period';
             }
             var leftPoint = _options.min;
             var rightPoint = _options.max;
@@ -495,7 +497,9 @@
                 control.on('mousedown', function(event) {
                     event.stopPropagation();
 
-                    if (_options.disabled) return;
+                    if (_options.disabled) {
+                        return;
+                    }
 
                     if ('minus' === type) {
                         key = _getPeriodKey(identifier);
@@ -505,8 +509,8 @@
                                     _rebuild();
                                 }
                             }
-                            if (typeof(_delete_period_confirm) === 'function') {
-                                _delete_period_confirm(_periods[key].toPublic(), function(result) {
+                            if (typeof(_deletePeriodConfirm) === 'function') {
+                                _deletePeriodConfirm(_periods[key].toPublic(), function(result) {
                                     if (result) {
                                         deletePeriod();
                                     }
@@ -529,8 +533,8 @@
                             key = _getPeriodKey(identifier);
                             if (key !== -1) {
                                 var indexes = _periods[key].getIndexes(),
-                                    leftEdge = _periods[key].getAbscissas()[1],
                                     nextKey = _getPeriodKeyByIndex(indexes[1] + 1);
+                                leftEdge = _periods[key].getAbscissas()[1];
                                 if (nextKey !== -1) {
                                     rightEdge = _periods[nextKey].getAbscissas()[0];
                                 }
@@ -542,8 +546,8 @@
                         start = leftEdge + (rightEdge - leftEdge) / 2 - length / 2;
                         var newPeriod = _addPeriod(start, length);
                         if (newPeriod !== null) {
-                            if (typeof(_add_period_confirm) === 'function') {
-                                _add_period_confirm(newPeriod.toPublic(), function(result) {
+                            if (typeof(_addPeriodConfirm) === 'function') {
+                                _addPeriodConfirm(newPeriod.toPublic(), function(result) {
                                     if (!result) {
                                         _deletePeriod(newPeriod.getId());
                                     }
@@ -711,7 +715,7 @@
          */
         this.setDeletePeriodConfirmCallback = function(confirmFunction) {
             if (typeof(confirmFunction) === 'function') {
-                _delete_period_confirm = confirmFunction;
+                _deletePeriodConfirm = confirmFunction;
             }
             return this;
         };
@@ -735,7 +739,7 @@
          */
         this.setAddPeriodConfirmCallback = function(confirmFunction) {
             if (typeof(confirmFunction) === 'function') {
-                _add_period_confirm = confirmFunction;
+                _addPeriodConfirm = confirmFunction;
             }
             return this;
         };
@@ -761,7 +765,7 @@
          */
         this.setOnHandleMouseenterCallback = function(callbackFunction) {
             if (typeof(callbackFunction) === 'function') {
-                _on_handle_mouseenter = callbackFunction;
+                _onHandleMouseenter = callbackFunction;
             }
             return this;
         };
@@ -787,7 +791,7 @@
          */
         this.setOnHandleSlideCallback = function(callbackFunction) {
             if (typeof(callbackFunction) === 'function') {
-                _on_handle_slide = callbackFunction;
+                _onHandleSlide = callbackFunction;
             }
             return this;
         };
@@ -855,5 +859,3 @@
     };
 
 })(window, jQuery);
-
-

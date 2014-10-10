@@ -6,11 +6,18 @@ Extends jquery-ui slider widget to include multiple ranges within a single slide
 Live example at jsFiddle http://jsfiddle.net/araczkowski/et4dmz1w/embedded/result/ http://jsfiddle.net/araczkowski/et4dmz1w/
 
 
-How To install
+How To Start
 ===========================
 
-TODO
+**Bower**
+```javascript
+bower install
+```
 
+**Grunt**
+```javascript
+grunt serve
+```
 
 Intervals class constructor
 ===========================
