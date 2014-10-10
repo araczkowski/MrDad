@@ -1,0 +1,98 @@
+.content {
+  margin: 30px;
+}
+.ui-slider-horizontal .ui-slider-range {
+  background-color: #ff930f;
+}
+.ui-slider-control-plus,
+.ui-slider-control-minus {
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  z-index: 99;
+  margin: -7px 0 0 -13px;
+  line-height: 26px;
+}
+.ui-slider-control-plus:after,
+.ui-slider-control-minus:after {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  color: #fff;
+  text-align: center;
+  right: 1px;
+  line-height: 26px;
+}
+.ui-slider-control-plus {
+  background: url(img/add_icon.png) 50% 50% repeat-x !important;
+}
+.ui-slider-control-minus:after {
+  content: "x";
+}
+.ui-slider-control-minus,
+.ui-slider-control-plus,
+.ui-slider-handle {
+  cursor: pointer;
+}
+.ui-slider-handle.arrow-left,
+.ui-slider-handle.arrow-right {
+  width: 0;
+  height: 0;
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+.ui-slider-handle.arrow-left {
+  margin-left: -16px;
+  border-top: 0.8em solid transparent;
+  border-bottom: 0.8em solid transparent;
+  border-right: 0.8em solid #e6e6e6;
+}
+.ui-slider-handle.arrow-right {
+  margin-left: 0px;
+  border-top: 0.8em solid transparent;
+  border-bottom: 0.8em solid transparent;
+  border-left: 0.8em solid #e6e6e6;
+}
+#slider {
+  width: 960px;
+}
+.steps {
+  border: 0px solid transparent;
+  width: 960px;
+  position: relative;
+  height: 30px;
+  margin-bottom: 10px;
+}
+.step {
+  width: 18px;
+  border: 1px solid #43838c;
+  background-color: #e9f4f8;
+  float: left;
+  height: 30px;
+}
+.tick {
+  border: 1px solid transparent;
+  position: absolute;
+  width: 1.2em;
+  margin-left: -.6em;
+  margin-top: -20px;
+  text-align: center;
+}
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+  background: url(img/scroll_icon.png) 50% 50% repeat-x !important;
+  font-weight: normal !important;
+  color: transparent !important;
+  border: none !important;
+}
+.ui-slider-handle {
+  width: 20px !important;
+  height: 24px !important;
+}
+.ui-widget-content {
+  border: 0px !important;
+}
+
