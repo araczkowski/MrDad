@@ -2,158 +2,251 @@
 <html class="no-js">
 
 <head>
-    <meta charset="utf-8">
-    <title>MultiRangeSlider</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css styles/vendor.css -->
-    <link rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css">
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
+	<meta charset="utf-8">
+	<title>MultiRangeSlider</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- build:css styles/vendor.css -->
+	<link rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css">
+	<!-- bower:css -->
+	<!-- endbower -->
+	<!-- endbuild -->
+	<!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
 </head>
 
 <body>
-    <!--[if lt IE 10]>
+	<!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
 
-    <div id="content" class="content">
-        <div class="steps">
-            <div class="step"></div>
-            <div class="step"><span class="tick">00</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">01</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">02</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">03</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">04</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">05</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">06</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">07</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">08</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">09</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">10</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">11</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">12</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">13</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">14</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">15</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">16</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">17</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">18</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">19</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">20</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">21</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">22</span>
-            </div>
-            <div class="step"></div>
-            <div class="step"><span class="tick">23</span>
-            </div>
-        </div>
-        <div id="slider"></div>
-        <br>
-        <div id="onhandleslide_info">
-        </div>
-        <br>
-    </div>
-    <div id="onhandlemouseenter_info"></div>
-    <br>
+	<div id="content" class="content">
+		<div class="steps">
+			<div class="step"><span class="tick">00</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">01</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">02</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">03</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">04</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">05</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">06</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">07</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">08</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">09</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">10</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">11</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">12</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">13</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">14</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">15</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">16</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">17</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">18</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">19</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">20</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">21</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">22</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+			<div class="step"><span class="tick">23</span>
+				<div class="step_content"></div>
+			</div>
+			<div class="step">
+				<div class="step_content"></div>
+			</div>
+
+		</div>
+		<div id="slider"></div>
+		<br>
+	</div>
+	<div id="slide_info"></div>
+	<br>
 
 
-    <!-- build:js({app,.tmp}) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/jquery.js"></script>
-    <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+	<!-- build:js({app,.tmp}) scripts/vendor.js -->
+	<!-- bower:js -->
+	<script src="bower_components/jquery/jquery.js"></script>
+	<script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
 
-    <!-- endbower -->
-    <!-- endbuild -->
+	<!-- endbower -->
+	<!-- endbuild -->
 
 
-    <!-- build:js({app,.tmp}) scripts/main.js -->
-    <script src="scripts/main.js"></script>
-    <!-- endbuild -->
-    <script>
-        $(function() {
-            var intervals = new Intervals('#slider');
-            intervals.addPeriod(640, 90);
+	<!-- build:js({app,.tmp}) scripts/main.js -->
+	<script src="scripts/main.js"></script>
+	<!-- endbuild -->
+	<script>
+		//go global
+		var intervals;
+		$(function () {
+			intervals = new Intervals('#slider');
+			intervals.addPeriod(640, 150);
 
-            intervals.setAddPeriodConfirmCallback(function(period, callback) {
-                callback(function() {
-                    return confirm('Add period between ' + period.getAbscissas()[0] + ' and ' + period.getAbscissas()[1]);
-                }());
-            });
+			intervals.setAddPeriodConfirmCallback(function (period, callback) {
+				callback(function () {
+					return true; //confirm('Add period between ' + period.getAbscissas()[0] + ' and ' + period.getAbscissas()[1]);
+				}());
+			});
 
-            intervals.setDeletePeriodConfirmCallback(function(period, callback) {
-                callback(function() {
-                    return confirm('Delete period between ' + period.getAbscissas()[0] + ' and ' + period.getAbscissas()[1]);
-                }());
-            });
+			intervals.setDeletePeriodConfirmCallback(function (period, callback) {
+				callback(function () {
+					return true; //confirm('Delete period between ' + period.getAbscissas()[0] + ' and ' + period.getAbscissas()[1]);
+				}());
+			});
 
-            intervals.setOnHandleSlideCallback(function(context, period, edgeIndex) {
-                var handlePosition = context.offset().left;
-                var periodId = period.getId();
-                var handleAbscissa = period.getAbscissas()[edgeIndex];
-                $('#onhandleslide_info').html('Last OnHandleSlide data:' + '<br>' + ' --- x-position: ' + handlePosition + ' px<br>' + ' --- slider value (abscissa): ' + handleAbscissa + '<br>' + ' --- orientation: ' + (edgeIndex === 1 ? 'right' : 'left') + ' handle<br>' + 'Period id: ' + periodId + '<br>');
-            });
 
-            intervals.setOnHandleMouseenterCallback(function(context, period, edgeIndex) {
-                var handlePosition = context.offset().left;
-                var periodId = period.getId();
-                var handleAbscissa = period.getAbscissas()[edgeIndex];
-                $('#onhandlemouseenter_info').html('Last OnHandleMouseenter data:' + '<br>' + ' --- x-position: ' + handlePosition + ' px<br>' + ' --- slider value (abscissa): ' + handleAbscissa + '<br>' + ' --- orientation: ' + (edgeIndex === 1 ? 'right' : 'left') + ' handle<br>' + 'Period id: ' + periodId + '<br>');
-            });
+			intervals.setOnHandleSlideCallback(addLabels);
+			intervals.setOnHandleMouseenterCallback(addLabels);
 
-        });
-    </script>
+
+			//
+			$('div.step_content').on('click', function (e) {
+				if ($(this).hasClass("open")) {
+					$(this).removeClass("open").addClass("closed");
+				} else {
+					$(this).removeClass("closed").addClass("open");
+				}
+			});
+		});
+
+		function minutesToStr(minutes) {
+			var hours = leftPad(Math.floor(Math.abs(minutes) / 60));
+			var minutes = leftPad(Math.abs(minutes) % 60);
+			return hours + ':' + minutes;
+		}
+		/*
+		 * add zero to numbers less than 10,Eg: 2 -> 02
+		 */
+		function leftPad(number) {
+			return ((number < 10 && number >= 0) ? '0' : '') + number;
+		}
+
+		function addLabels(context, period, edgeIndex) {
+			var handlePosition = context.offset().left;
+			var periodId = period.getId();
+			var handleAbscissa = period.getAbscissas()[edgeIndex];
+
+
+			$('#slide_info').html('Last data:' + '<br>' + ' --- x-position: ' + handlePosition + ' px<br>' + ' --- slider value:: ' + minutesToStr(handleAbscissa) + '<br>' + ' --- orientation: ' + (edgeIndex === 1 ? 'right' : 'left') + ' handle<br>' + 'Period id: ' + periodId + '<br>');
+
+		};
+	</script>
 </body>
 
 </html>

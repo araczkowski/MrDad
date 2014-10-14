@@ -56,36 +56,45 @@
   border-left: 0.8em solid #e6e6e6;
 }
 #slider {
-  width: 960px;
+  width: 96%;
 }
 .steps {
-  border: 0px solid transparent;
-  width: 960px;
   position: relative;
   height: 30px;
   margin-bottom: 10px;
 }
+
 .step {
-  width: 18px;
-  border: 1px solid #43838c;
-  background-color: #e9f4f8;
   float: left;
+  background-color: #43838c;
+  width: 2%;
   height: 30px;
+  border: 1px solid #43838c; /* set padding to simulate border */
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+
 }
+
+.step_content{
+	background-color: #e9f4f8;
+	width: 100%;
+	height: 100%;
+}
+
 .tick {
   border: 1px solid transparent;
   position: absolute;
-  width: 1.2em;
   margin-left: -.6em;
   margin-top: -20px;
   text-align: center;
 }
+
 .ui-state-default,
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
   background: url(img/scroll_icon.png) 50% 50% repeat-x !important;
   font-weight: normal !important;
-  color: transparent !important;
   border: none !important;
 }
 .ui-slider-handle {
@@ -95,4 +104,12 @@
 .ui-widget-content {
   border: 0px !important;
 }
+.handle_label {
+font-size: small;
+	position: absolute;
+	margin-top: 20px;
+}
 
+div.open {
+	background: #cce877;
+}
