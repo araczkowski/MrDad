@@ -9,6 +9,11 @@ Live example at jsFiddle http://jsfiddle.net/araczkowski/et4dmz1w/embedded/resul
 How To Start
 ===========================
 
+**NPM**
+```javascript
+npm install
+```
+
 **Bower**
 ```javascript
 bower install
