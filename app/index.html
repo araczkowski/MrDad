@@ -24,7 +24,7 @@
         <![endif]-->
 
 
-	<div id="content" class="content">
+<div id="content" class="content">
 		<div class="steps">
 			<div class="step"><span class="tick">00</span>
 				<div class="step_content"></div>
@@ -206,7 +206,8 @@
 
 			intervals.setDeletePeriodConfirmCallback(function (period, callback) {
 				callback(function () {
-					return true; //confirm('Delete period between ' + period.getAbscissas()[0] + ' and ' + period.getAbscissas()[1]);
+					///return true; //
+                    confirm('Delete period between ' + minutesToStr(period.getAbscissas()[0]) + ' and ' + minutesToStr(period.getAbscissas()[1]));
 				}());
 			});
 
