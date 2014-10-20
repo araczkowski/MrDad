@@ -2,252 +2,298 @@
 <html class="no-js">
 
 <head>
-	<meta charset="utf-8">
-	<title>MultiRangeSlider</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width">
-	<link rel="shortcut icon" href="/favicon.ico">
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<!-- build:css styles/vendor.css -->
-	<link rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css">
-	<!-- bower:css -->
-	<!-- endbower -->
-	<!-- endbuild -->
-	<!-- build:css(.tmp) styles/main.css -->
-	<link rel="stylesheet" href="styles/main.css">
-	<!-- endbuild -->
+    <meta charset="utf-8">
+    <title>MultiRangeSlider</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- build:css styles/vendor.css -->
+    <link rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css">
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
 </head>
 
 <body>
-	<!--[if lt IE 10]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    <div id="content" class="content">
+
+        <div id="steps" class="steps sortable">
+            <div id="top_container_for_blocks" class="top_container_for_blocks"></div>
+            <div class="step"><span class="tick">00</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">01</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">02</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">03</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">04</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">05</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">06</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">07</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">08</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">09</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">10</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">11</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">12</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">13</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">14</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">15</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">16</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">17</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">18</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">19</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">20</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">21</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">22</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
+            <div class="step"><span class="tick">23</span>
+                <div class="step_content"></div>
+            </div>
+            <div class="step">
+                <div class="step_content"></div>
+            </div>
 
 
-<div id="content" class="content">
-		<div class="steps">
-			<div class="step"><span class="tick">00</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">01</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">02</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">03</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">04</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">05</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">06</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">07</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">08</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">09</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">10</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">11</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">12</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">13</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">14</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">15</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">16</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">17</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">18</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">19</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">20</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">21</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">22</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-			<div class="step"><span class="tick">23</span>
-				<div class="step_content"></div>
-			</div>
-			<div class="step">
-				<div class="step_content"></div>
-			</div>
-
-		</div>
-		<div id="slider"></div>
-		<br>
-	</div>
-	<div id="slide_info"></div>
-	<br>
+        </div>
+        <div id="slider"></div>
+        <br>
 
 
-	<!-- build:js({app,.tmp}) scripts/vendor.js -->
-	<!-- bower:js -->
-	<script src="bower_components/jquery/jquery.js"></script>
-	<script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+        <div id="blocks" class="source">
+            <div id="block30" class="ui-state-highlight draggable_block template block30">30</div>
+            <div id="block60" class="ui-state-highlight draggable_block template block60">60</div>
+            <div id="block120" class="ui-state-highlight draggable_block template block120">120</div>
+            <div id="block0" class="ui-state-highlight draggable_block template block0">0</div>
 
-	<!-- endbower -->
-	<!-- endbuild -->
+            <div id="trash-can" class="trash-can-for-sortable">Drop this block here to give it back</div>
+        </div>
+    </div>
 
+    <!-- build:js({app,.tmp}) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
 
-	<!-- build:js({app,.tmp}) scripts/main.js -->
-	<script src="scripts/main.js"></script>
-	<!-- endbuild -->
-	<script>
-		//go global
-		var intervals;
-		$(function () {
-			intervals = new Intervals('#slider');
-			intervals.addPeriod(640, 150);
-
-			intervals.setAddPeriodConfirmCallback(function (period, callback) {
-				callback(function () {
-					return true; //confirm('Add period between ' + period.getAbscissas()[0] + ' and ' + period.getAbscissas()[1]);
-				}());
-			});
-
-			intervals.setDeletePeriodConfirmCallback(function (period, callback) {
-				callback(function () {
-					///return true; //
-                    confirm('Delete period between ' + minutesToStr(period.getAbscissas()[0]) + ' and ' + minutesToStr(period.getAbscissas()[1]));
-				}());
-			});
+    <!-- endbower -->
+    <!-- endbuild -->
 
 
-			intervals.setOnHandleSlideCallback(addLabels);
-			intervals.setOnHandleMouseenterCallback(addLabels);
+    <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+    <script>
+        var intervals;
+        $(function() {
+            intervals = new Intervals('#slider');
+            intervals.addPeriod(640, 150);
+
+            intervals.setAddPeriodConfirmCallback(function(period, callback) {
+                callback(function() {
+                    return true; //confirm('Add period between ' + period.getAbscissas()[0] + ' and ' + period.getAbscissas()[1]);
+                }());
+            });
+
+            intervals.setDeletePeriodConfirmCallback(function(period, callback) {
+                callback(function() {
+                    return true; //
+                    //return confirm('Delete period between ' + minutesToStr(period.getAbscissas()[0]) + ' and ' + minutesToStr(period.getAbscissas()[1]));
+                }());
+            });
 
 
-			//
-			$('div.step_content').on('click', function (e) {
-				if ($(this).hasClass("open")) {
-					$(this).removeClass("open").addClass("closed");
-				} else {
-					$(this).removeClass("closed").addClass("open");
-				}
-			});
-		});
-
-		function minutesToStr(minutes) {
-			var hours = leftPad(Math.floor(Math.abs(minutes) / 60));
-			var minutes = leftPad(Math.abs(minutes) % 60);
-			return hours + ':' + minutes;
-		}
-		/*
-		 * add zero to numbers less than 10,Eg: 2 -> 02
-		 */
-		function leftPad(number) {
-			return ((number < 10 && number >= 0) ? '0' : '') + number;
-		}
-
-		function addLabels(context, period, edgeIndex) {
-			var handlePosition = context.offset().left;
-			var periodId = period.getId();
-			var handleAbscissa = period.getAbscissas()[edgeIndex];
+            //intervals.setOnHandleSlideCallback(addLabels);
+            //intervals.setOnHandleMouseenterCallback(addLabels);
 
 
-			$('#slide_info').html('Last data:' + '<br>' + ' --- x-position: ' + handlePosition + ' px<br>' + ' --- slider value:: ' + minutesToStr(handleAbscissa) + '<br>' + ' --- orientation: ' + (edgeIndex === 1 ? 'right' : 'left') + ' handle<br>' + 'Period id: ' + periodId + '<br>');
+            /*
+            $('div.step_content').on('click', function(e) {
+                if ($(this).hasClass("open")) {
+                    $(this).removeClass("open").addClass("closed");
+                } else {
+                    $(this).removeClass("closed").addClass("open");
+                }
+            });
+            */
 
-		};
-	</script>
+            $("#top_container_for_blocks").sortable({
+                revert: true,
+                receive: function(event, div) {
+                    $("div.top_container_for_blocks > div").addClass('planned-block');
+                    $("div.top_container_for_blocks > div").removeClass('template');
+                },
+                start: function(event, div) {
+                    /*
+                    var text = $.trim(div.item.text());
+                    div.item.startHtml = div.item.html();
+                    div.item.html('<div style="display: inline-block;" class="rf-ind-drag default drag">' + text + '</div>');
+                    */
+                    //show the trash
+                    //$('div.trash-can-for-sortable').removeClass('unvisible');
+
+                },
+                stop: function(event, div) {
+                    //div.item.html(div.item.startHtml);
+                    // hide the trash
+                    //$('div.trash-can-for-sortable').addClass('unvisible');
+                }
+
+
+
+            });
+
+            $(".source .draggable_block").draggable({
+                connectToSortable: "#top_container_for_blocks",
+                helper: "clone",
+                revert: "invalid",
+                snap: "#top_container_for_blocks"
+            });
+
+
+            $("#top_container_for_blocks").bind("sortreceive", function(event, div) {
+                if ($("#top_container_for_blocks div").length > 3) {
+                    $(this).addClass('dontDrop');
+                } else {
+                    $(this).removeClass('dontDrop');
+                }
+            });
+
+            $("div.draggable, div.top_container_for_blocks").disableSelection();
+
+
+            $("#trash-can").droppable({
+                hoverClass: "droppable-hover",
+                drop: function(event, div) {
+                    var element = $("div.rf-ind-drag").css('position', '');
+                    $(this).append(element);
+                    $(div.draggable).fadeOut(1000);
+                    $(div.draggable).remove();
+
+                },
+                accept: function(div) {
+                    if (div.hasClass("planned-block")) {
+                        return true;
+                    }
+                },
+                activeClass: "visible",
+                hoverClass: "trash-state-active"
+            });
+
+        });
+    </script>
 </body>
 
 </html>

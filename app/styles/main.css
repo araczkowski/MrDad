@@ -61,7 +61,7 @@
 .steps {
     position: relative;
     height: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .step {
     float: left;
@@ -89,10 +89,7 @@
     margin-top: -20px;
     text-align: center;
 }
-
-.ui-state-default,
-.ui-widget-content .ui-state-default,
-.ui-widget-header .ui-state-default {
+.ui-slider-handle {
     background: url(img/scroll_icon.png) 50% 50% repeat-x !important;
     font-weight: normal !important;
     border: none !important;
@@ -109,6 +106,83 @@
     position: absolute;
     margin-top: 20px;
 }
-div.open {
+/*blocks*/
+
+#top_container_for_blocks>div {
+    float: left;
+}
+#top_container_for_blocks:after {
+    clear: both;
+    content: '.';
+    display: block;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    visibility: hidden;
+    padding: 0;
+    margin: 0;
+}
+div.top_container_for_blocks {
+    z-index: 999;
+    position: absolute;
+    width: 100%;
+    max-width: 100%;
+    height: 30px;
+}
+div.template {
+    margin-right: 10px;
+    float: left;
+}
+div.draggable_block {
+    background: rgba(204, 232, 119, 0.3);
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    font-size: 14px;
+    border: 1px solid #43838c;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: copy;
+}
+div.planned-block {
     background: #cce877;
+    cursor: move;
+}
+.block30,
+.block0 {
+    width: 2%;
+}
+div.block0 {
+    background-color: transparent;
+    background: none !important;
+}
+.block60 {
+    width: 4%;
+}
+.block120 {
+    width: 8%;
+}
+.trash-can-for-sortable {
+    position: absolute;
+    float: left;
+    width: inherit;
+    min-height: 50px;
+    padding: 0.5em;
+    cursor: pointer;
+    border: 1px dotted red;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    font-size: 18px;
+    visibility: hidden;
+    background-color: white;
+}
+div.visible {
+    visibility: visible;
+}
+div.trash-state-active {
+    border: 2px dotted green;
+    background-color: rgba(255, 255, 255, 1.0);
 }
