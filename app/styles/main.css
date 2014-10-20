@@ -60,14 +60,14 @@
 }
 .steps {
     position: relative;
-    height: 30px;
+    height: 50px;
     margin-bottom: 5px;
 }
 .step {
     float: left;
     background-color: #43838c;
     width: 2%;
-    height: 30px;
+    height: 50px;
     border: 1px solid #43838c;
     /* set padding to simulate border */
     -webkit-box-sizing: border-box;
@@ -108,55 +108,24 @@
 }
 /*blocks*/
 
-#top_container_for_blocks>div {
-    float: left;
-}
-#top_container_for_blocks:after {
-    clear: both;
-    content: '.';
-    display: block;
-    height: 0;
-    line-height: 0;
-    font-size: 0;
-    visibility: hidden;
-    padding: 0;
-    margin: 0;
-}
-div.top_container_for_blocks {
-    z-index: 999;
-    position: absolute;
-    width: 100%;
-    max-width: 100%;
-    height: 30px;
-}
 div.template {
     margin-right: 10px;
     float: left;
 }
-div.draggable_block {
+div.draggable-block {
     background: rgba(204, 232, 119, 0.3);
-    height: 30px;
+    height: 50px;
     text-align: center;
     vertical-align: middle;
-    line-height: 30px;
+    line-height: 50px;
     font-size: 14px;
     border: 1px solid #43838c;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    cursor: copy;
 }
-div.planned-block {
-    background: #cce877;
-    cursor: move;
-}
-.block30,
-.block0 {
+.block30 {
     width: 2%;
-}
-div.block0 {
-    background-color: transparent;
-    background: none !important;
 }
 .block60 {
     width: 4%;
@@ -164,25 +133,52 @@ div.block0 {
 .block120 {
     width: 8%;
 }
-.trash-can-for-sortable {
-    position: absolute;
-    float: left;
-    width: inherit;
-    min-height: 50px;
-    padding: 0.5em;
-    cursor: pointer;
-    border: 1px dotted red;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 30px;
-    font-size: 18px;
-    visibility: hidden;
-    background-color: white;
+.empty {
+    background: #eee;
+    border: 1px dashed #999;
 }
-div.visible {
-    visibility: visible;
+.planned-block-body .step_content {
+    background: #cce877;
 }
-div.trash-state-active {
-    border: 2px dotted green;
-    background-color: rgba(255, 255, 255, 1.0);
+div.planned-block-body {
+    border-top: 2px solid green;
+    border-bottom: 2px solid green;
+    border-left: 0px;
+    border-right: 0px;
+}
+div.planned-block-start {
+    border-left: 2px solid green;
+}
+div.planned-block-end {
+    border-right: 2px solid green;
+}
+.highlight.empty {
+    border: 2px solid green;
+    background: #fff;
+}
+.highlight {
+    border: 1px solid red;
+    background: #fff;
+}
+.highlight .item {
+    opacity: 0.3;
+}
+div.draggable-block .handle {
+    height: 30%;
+    background: darkgreen;
+    cursor: copy;
+}
+.block30 .handle {
+    width: 100%;
+}
+.block60 .handle {
+    width: 50%;
+}
+.block120 .handle {
+    width: 25%;
+}
+div.step .handle {
+    height: 30%;
+    background: darkgreen;
+    cursor: copy;
 }
