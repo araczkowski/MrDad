@@ -1,5 +1,11 @@
+/*
+http://s7.postimg.org/c5vsmci0n/add_icon.png
+http://s30.postimg.org/5mr87i2jx/scroll_icon.png
+*/
+
 .content {
     margin: 30px;
+    width: 96%;
 }
 .ui-slider-horizontal .ui-slider-range {
     background-color: #ff930f;
@@ -24,7 +30,7 @@
     line-height: 26px;
 }
 .ui-slider-control-plus {
-    background: url(img/add_icon.png) 50% 50% repeat-x !important;
+    background: url(http://s7.postimg.org/c5vsmci0n/add_icon.png) 50% 50% repeat-x !important;
 }
 .ui-slider-control-minus:after {
     content: "x";
@@ -90,7 +96,7 @@
     text-align: center;
 }
 .ui-slider-handle {
-    background: url(img/scroll_icon.png) 50% 50% repeat-x !important;
+    background: url(http://s30.postimg.org/5mr87i2jx/scroll_icon.png) 50% 50% repeat-x !important;
     font-weight: normal !important;
     border: none !important;
 }
@@ -108,6 +114,9 @@
 }
 /*blocks*/
 
+div.source {
+    width: 100%;
+}
 div.template {
     margin-right: 10px;
     float: left;
@@ -152,20 +161,18 @@ div.planned-block-start {
 div.planned-block-end {
     border-right: 2px solid green;
 }
-.highlight.empty {
+.highlightOK {
     border: 2px solid green;
     background: #fff;
 }
-.highlight {
-    border: 1px solid red;
+.highlightNOK {
+    border: 2px solid red;
     background: #fff;
-}
-.highlight .item {
-    opacity: 0.3;
 }
 div.draggable-block .handle {
     height: 30%;
-    background: darkgreen;
+    border-bottom: 2px dashed #999;
+    border-right: 2px dashed #999;
     cursor: copy;
 }
 .block30 .handle {
@@ -177,8 +184,13 @@ div.draggable-block .handle {
 .block120 .handle {
     width: 25%;
 }
-div.step .handle {
-    height: 30%;
-    background: darkgreen;
-    cursor: copy;
+.step_content .closer {
+    display: block;
+    right: 5px;
+    top: 2px;
+    font: bold 14px arial;
+    color: #666;
+    padding: 0px 2px;
+    line-height: 1;
+    cursor: pointer;
 }

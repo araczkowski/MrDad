@@ -244,36 +244,51 @@
                 revert: true,
                 //hoverClass: 'highlight',
                 over: function(event, div) {
-                    var list = getHoveredDivs($(this), div, 'step');
+                    var className;
+                    //
+                    $('div.step').removeClass('highlightNOK');
+                    $('div.step').removeClass('highlightOK');
+
+                    var nSteps = (div.draggable.attr('id').replace("block", "") / 30);
+                    var list = getHoveredDivs($(this), div, 'step', nSteps);
+                    var list2 = getHoveredDivs($(this), div, 'empty', nSteps);
+                    if (nSteps != list2.length) {
+                        className = 'highlightNOK';
+                    } else {
+                        className = 'highlightOK';
+                    }
+
                     list.forEach(function(entry) {
-                        //entry.css("border", "0px");
-                        entry.addClass('highlight');
+                        entry.addClass(className);
                     });
                 },
-                out: function(event, div) {
-                    //entry.css("border", "1px");
-                    $('div.highlight').removeClass('highlight');
-                },
-
                 drop: function(ev, div) {
                     //
-                    $('div.highlight').removeClass('highlight');
+                    $('div.step').removeClass('highlightNOK');
+                    $('div.step').removeClass('highlightOK');
+                    var x = $(this).width();
+                    var y = div.draggable.width();
 
-                    var nSteps = ((div.draggable.width() / $(this).width()).toPrecision(1));
-                    var bSteps = getHoveredDivs($(this), div, 'empty');
+
+                    var nSteps = (div.draggable.attr('id').replace("block", "") / 30);
+                    var bSteps = getHoveredDivs($(this), div, 'empty', nSteps);
 
                     if (bSteps.length != nSteps) {
                         div.draggable.effect('shake', {}, 300);
                         return;
                     }
 
+
                     for (i = 0; i < nSteps; i++) {
                         bSteps[i].removeClass('empty');
+
                         bSteps[i].addClass('planned-block-body');
+                        bSteps[i].addClass('planned-block-' + $(this).attr('id'));
 
 
                         if (i == 0) {
                             bSteps[i].addClass('planned-block-start');
+                            bSteps[i].find('div').prepend('<span class="closer">x</span>');
                         }
 
                         if (i == nSteps - 1) {
@@ -285,11 +300,8 @@
 
             });
 
-            function getHoveredDivs(first_element, block_div, class_name) {
+            function getHoveredDivs(first_element, block_div, class_name, nSteps) {
                 var hoveredDivs = [];
-
-
-                var nSteps = (block_div.draggable.width() / first_element.width()).toPrecision(1);
                 for (i = 0; i < nSteps; i++) {
                     var step = Number(first_element.attr('id').replace("step_", "")) + Number(i);
                     if ($('#step_' + step).hasClass(class_name)) {
@@ -301,6 +313,21 @@
             }
 
             $("div.draggable, .steps .step").disableSelection();
+
+
+            $(".step_content").on('click', '.closer', function() {
+                alert('todo');
+                var item = $(this).closest('.step');
+                var no = item.attr('id').replace("step_", "");
+                var items = $('.planned-block-step_' + no);
+                console.log(items);
+                items.forEach(function(entry) {
+                    entry.addClass('empty');
+                    entry.removeClass('planned-block-body');
+                    entry.removeClass('planned-block-start');
+                    entry.removeClass('planned-block-end');
+                });
+            });
 
 
         });
