@@ -7,18 +7,14 @@ Live example at jsFiddle http://jsfiddle.net/araczkowski/et4dmz1w/embedded/resul
 
 TODO
 ===========================
-****0. possibility to add block only in selected range ****
 
-****1. the minimum gap between ranges****
+***rewriting and optimization the codes***
 
-****2. two modes: range(slider) and block(drag and drop)****
+***improve CSS - font awesome instead of png items***
 
-****3. rewriting and optimization the codes****
+***tests in Browsers (IE, FireFox, Chrome)***
 
-****4. tests in Browsers (IE, FireFox, Chrome)****
-
-****5. integration with APEX (plugin)****
-
+***integration with APEX (plugin)***
 
 
 How To Start
