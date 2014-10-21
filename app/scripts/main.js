@@ -121,13 +121,13 @@
         }
 
         function _initEvents() {
-            _options.create = function(event, ui) {
+            /* _options.create = function(event, ui) {
 
             };
 
             _options.change = function(event, ui) {
 
-            };
+            };*/
 
             _options.slide = function(event, ui) {
                 var index = _slider.find('.' + SELECTORS.handle['class']).index(ui.handle);
@@ -168,13 +168,13 @@
                 return onSlide();
             };
 
-            _options.start = function(event, ui) {
+            /*_options.start = function(event, ui) {
 
             };
 
             _options.stop = function(event, ui) {
 
-            };
+            };*/
 
             _slider.on('mouseenter', '.' + SELECTORS.handle['class'], function(event) {
                 if (typeof(_onHandleMouseenter) === 'function') {
@@ -632,7 +632,7 @@
 
         function _minutesToStr(minutes) {
             var hours = _leftPad(Math.floor(Math.abs(minutes) / 60));
-            var minutes = _leftPad(Math.abs(minutes) % 60);
+            minutes = _leftPad(Math.abs(minutes) % 60);
             return hours + ':' + minutes;
         }
         /*
@@ -879,9 +879,10 @@
 })(window, jQuery);
 
 // custom code
-var intervals;
+//var intervals;
+
 $(function() {
-    intervals = new Intervals('#slider');
+    var intervals = new Intervals('#slider');
     intervals.addPeriod(580, 240);
 
     intervals.setAddPeriodConfirmCallback(function(period, callback) {
@@ -915,16 +916,16 @@ $(function() {
             this.dropped = false;
         }
 
-        if ((this.options.revert == "invalid" && !dropped) || (this.options.revert == "valid" && dropped) || this.options.revert === true || ($.isFunction(this.options.revert) && this.options.revert.call(this.element, dropped))) {
+        if ((this.options.revert == 'invalid' && !dropped) || (this.options.revert == 'valid' && dropped) || this.options.revert === true || ($.isFunction(this.options.revert) && this.options.revert.call(this.element, dropped))) {
             var self = this;
-            self._trigger("reverting", event);
+            self._trigger('reverting', event);
             $(this.helper).animate(this.originalPosition, parseInt(this.options.revertDuration, 10), function() {
                 event.reverted = true;
-                self._trigger("stop", event);
+                self._trigger('stop', event);
                 self._clear();
             });
         } else {
-            this._trigger("stop", event);
+            this._trigger('stop', event);
             this._clear();
         }
 
@@ -932,13 +933,13 @@ $(function() {
     }
     //
 
-    $("div.draggable-block").draggable({
-        //connectToSortable: "#top_container_for_blocks",
+    $('div.draggable-block').draggable({
+        //connectToSortable: '#top_container_for_blocks',
         appendTo: 'body',
         helper: 'clone',
         revert: 'invalid',
-        //snap: ".steps .step",
-        handle: "div.handle",
+        //snap: '.steps .step',
+        handle: 'div.handle',
         greedy: true,
         reverting: function() {
             $('div.step').removeClass('highlightNOK');
@@ -955,7 +956,7 @@ $(function() {
 
 
 
-    $(".steps .step").droppable({
+    $('.steps .step').droppable({
         tolerance: 'pointer',
         revert: true,
         //hoverClass: 'highlight',
@@ -965,7 +966,7 @@ $(function() {
             $('div.step').removeClass('highlightNOK');
             $('div.step').removeClass('highlightOK');
 
-            var nSteps = (div.draggable.attr('id').replace("block", "") / 30);
+            var nSteps = (div.draggable.attr('id').replace('block', '') / 30);
             var list = getHoveredDivs($(this), div, 'step', nSteps);
             var list2 = getHoveredDivs($(this), div, 'empty', nSteps);
             if (nSteps != list2.length) {
@@ -988,7 +989,7 @@ $(function() {
             //var y = div.draggable.width();
 
 
-            var nSteps = (div.draggable.attr('id').replace("block", "") / 30);
+            var nSteps = (div.draggable.attr('id').replace('block', '') / 30);
             var bSteps = getHoveredDivs($(this), div, 'empty', nSteps);
 
             if (bSteps.length != nSteps) {
@@ -997,7 +998,7 @@ $(function() {
             }
 
 
-            for (i = 0; i < nSteps; i++) {
+            for (var i = 0; i < nSteps; i++) {
                 bSteps[i].removeClass('empty');
 
                 bSteps[i].addClass('planned-block-body');
@@ -1018,11 +1019,11 @@ $(function() {
 
     });
 
-    function getHoveredDivs(first_element, block_div, class_name, nSteps) {
+    function getHoveredDivs(firstElement, blockDiv, className, nSteps) {
         var hoveredDivs = [];
-        for (i = 0; i < nSteps; i++) {
-            var step = Number(first_element.attr('id').replace("step_", "")) + Number(i);
-            if ($('#step_' + step).hasClass(class_name)) {
+        for (var i = 0; i < nSteps; i++) {
+            var step = Number(firstElement.attr('id').replace('step_', '')) + Number(i);
+            if ($('#step_' + step).hasClass(className)) {
                 hoveredDivs.push($('#step_' + step));
             }
         }
@@ -1030,12 +1031,12 @@ $(function() {
 
     }
 
-    $("div.draggable, .steps .step").disableSelection();
+    $('div.draggable, .steps .step').disableSelection();
 
 
-    $(".step_content").on('click', '.closer', function() {
+    $('.step_content').on('click', '.closer', function() {
         var item = $(this).closest('.step');
-        var no = item.attr('id').replace("step_", "");
+        var no = item.attr('id').replace('step_', '');
         var selector = '.planned-block-step_' + no;
         $(selector).removeClass('planned-block-body').removeClass('planned-block-start').removeClass('planned-block-end').addClass('empty');
         $(selector).find($('.closer')).remove();
