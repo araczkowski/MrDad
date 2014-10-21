@@ -5,6 +5,21 @@ Extends jquery-ui slider widget to include multiple ranges within a single slide
 
 Live example at jsFiddle http://jsfiddle.net/araczkowski/et4dmz1w/embedded/result/ http://jsfiddle.net/araczkowski/et4dmz1w/
 
+TODO
+===========================
+****0. possibility to add block only in selected range ****
+
+****1. the minimum gap between ranges****
+
+****2. two modes: range(slider) and block(drag and drop)****
+
+****3. rewriting and optimization the codes****
+
+****4. tests in Browsers (IE, FireFox, Chrome)****
+
+****5. integration with APEX (plugin)****
+
+
 
 How To Start
 ===========================
