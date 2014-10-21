@@ -33,8 +33,8 @@
             min: 0,
             max: 1440,
             step: 30,
-            gap: 120,
-            newlength: 150,
+            gap: 90,
+            newlength: 30,
             disabled: false
         };
         var _deletePeriodConfirm = null,
@@ -121,15 +121,39 @@
         }
 
         function _initEvents() {
-            /* _options.create = function(event, ui) {
+            _options.create = function(event, ui) {
 
             };
 
             _options.change = function(event, ui) {
 
-            };*/
+            };
+
 
             _options.slide = function(event, ui) {
+                //
+                function checkIfArrayIsUnique(arr) {
+                    var map = {}, i, size;
+                    for (i = 0, size = arr.length; i < size; i++) {
+                        if (map[arr[i]]) {
+                            return false;
+                        }
+                        map[arr[i]] = true;
+                    }
+                    return true;
+                }
+                // check the minimum gap
+                var values = [];
+                values.push(ui.value);
+                for (var i = 0; i < _periods.length; i++) {
+                    var e = _periods[i].getAbscissas();
+                    values.push(e[0], e[1]);
+                }
+                if (!checkIfArrayIsUnique(values)) {
+                    return false;
+                }
+
+
                 var index = _slider.find('.' + SELECTORS.handle['class']).index(ui.handle);
 
                 function onSlide() {
