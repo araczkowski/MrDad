@@ -1048,15 +1048,31 @@ $(function() {
 
     $('input[type=radio][name=rangeWorkMode]').change(function() {
         if (this.value == 'general') {
-            $('div.source').hide();
-            console.log(intervals.getPeriods());
-            alert('todo');
-
-            intervals.enable();
             $('.step,.empty').removeClass('empty');
+            $('.planned-block-body').removeClass('planned-block-body');
+            $('.planned-block-start').removeClass('planned-block-start');
+            $('.planned-block-end').removeClass('planned-block-end');
+            $('div.step_content span.closer').remove();
+
+            $('div.source').hide();
+            intervals.enable();
+
         } else if (this.value == 'hours') {
             $('div.source').show();
+            intervals.getPeriods().forEach(function(period) {
+                var startId = period.getAbscissas()[0];
+                var endId = period.getAbscissas()[1];
+                var steps = Number(endId) / 30 - Number(startId) / 30;
+                for (var i = 0; i < steps; i++) {
+                    var selector = '#step_' + (Number(startId) / 30 + 1 + i);
+                    $(selector).addClass('empty');
+                }
+                //console.log(period.getId());
+            });
             intervals.disable();
         }
     });
+
+    //select the mode after load
+    $('input:radio[name=rangeWorkMode][value=general]').click();
 });

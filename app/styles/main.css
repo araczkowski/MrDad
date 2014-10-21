@@ -6,6 +6,7 @@ http://s30.postimg.org/5mr87i2jx/scroll_icon.png
 .content {
     margin: 30px;
     width: 96%;
+    /*min-width: 1600px;*/
 }
 .ui-slider-horizontal .ui-slider-range {
     background-color: #ff930f;
@@ -116,6 +117,7 @@ http://s30.postimg.org/5mr87i2jx/scroll_icon.png
 
 div.source {
     width: 100%;
+    margin-top: 30px;
 }
 div.template {
     margin-right: 10px;
