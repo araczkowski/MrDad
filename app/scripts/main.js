@@ -879,10 +879,12 @@
 })(window, jQuery);
 
 // custom code
-//var intervals;
+/* GLOBALS */
+var intervals;
+
 
 $(function() {
-    var intervals = new Intervals('#slider');
+    intervals = new Intervals('#slider');
     intervals.addPeriod(580, 240);
 
     intervals.setAddPeriodConfirmCallback(function(period, callback) {
@@ -1044,4 +1046,17 @@ $(function() {
     });
 
 
+    $('input[type=radio][name=rangeWorkMode]').change(function() {
+        if (this.value == 'general') {
+            $('div.source').hide();
+            console.log(intervals.getPeriods());
+            alert('todo');
+
+            intervals.enable();
+            $('.step,.empty').removeClass('empty');
+        } else if (this.value == 'hours') {
+            $('div.source').show();
+            intervals.disable();
+        }
+    });
 });
