@@ -933,8 +933,9 @@ $(function() {
     $.ui.draggable.prototype._mouseStop = function(event) {
         //If we are using droppables, inform the manager about the drop
         var dropped = false;
-        if ($.ui.ddmanager && !this.options.dropBehaviour)
+        if ($.ui.ddmanager && !this.options.dropBehaviour) {
             dropped = $.ui.ddmanager.drop(this, event);
+        }
 
         //if a drop comes from outside (a sortable)
         if (this.dropped) {
@@ -942,7 +943,7 @@ $(function() {
             this.dropped = false;
         }
 
-        if ((this.options.revert == 'invalid' && !dropped) || (this.options.revert == 'valid' && dropped) || this.options.revert === true || ($.isFunction(this.options.revert) && this.options.revert.call(this.element, dropped))) {
+        if ((this.options.revert === 'invalid' && !dropped) || (this.options.revert === 'valid' && dropped) || this.options.revert === true || ($.isFunction(this.options.revert) && this.options.revert.call(this.element, dropped))) {
             var self = this;
             self._trigger('reverting', event);
             $(this.helper).animate(this.originalPosition, parseInt(this.options.revertDuration, 10), function() {
@@ -956,7 +957,7 @@ $(function() {
         }
 
         return false;
-    }
+    };
     //
 
     $('div.draggable-block').draggable({
@@ -995,7 +996,7 @@ $(function() {
             var nSteps = (div.draggable.attr('id').replace('block', '') / 30);
             var list = getHoveredDivs($(this), div, 'step', nSteps);
             var list2 = getHoveredDivs($(this), div, 'empty', nSteps);
-            if (nSteps != list2.length) {
+            if (nSteps !== list2.length) {
                 className = 'highlightNOK';
             } else {
                 className = 'highlightOK';
@@ -1018,7 +1019,7 @@ $(function() {
             var nSteps = (div.draggable.attr('id').replace('block', '') / 30);
             var bSteps = getHoveredDivs($(this), div, 'empty', nSteps);
 
-            if (bSteps.length != nSteps) {
+            if (bSteps.length !== nSteps) {
                 div.draggable.effect('shake', {}, 300);
                 return;
             }
@@ -1031,12 +1032,12 @@ $(function() {
                 bSteps[i].addClass('planned-block-' + $(this).attr('id'));
 
 
-                if (i == 0) {
+                if (i === 0) {
                     bSteps[i].addClass('planned-block-start');
-                    bSteps[i].find('div').prepend('<span class="closer">x</span>');
+                    bSteps[i].find('div').prepend('<span class="closer"><i class="fa fa-times"></i></span>');
                 }
 
-                if (i == nSteps - 1) {
+                if (i === nSteps - 1) {
                     bSteps[i].addClass('planned-block-end');
                 }
             }
@@ -1071,7 +1072,7 @@ $(function() {
 
 
     $('input[type=radio][name=rangeWorkMode]').change(function() {
-        if (this.value == 'general') {
+        if (this.value === 'general') {
             $('.step,.empty').removeClass('empty');
             $('.planned-block-body').removeClass('planned-block-body');
             $('.planned-block-start').removeClass('planned-block-start');
@@ -1080,8 +1081,9 @@ $(function() {
 
             $('div.source').hide();
             intervals.enable();
+            $('.ui-slider-control-plus,.ui-slider-control-minus').show();
 
-        } else if (this.value == 'hours') {
+        } else if (this.value === 'hours') {
             $('div.source').show();
             intervals.getPeriods().forEach(function(period) {
                 var startId = period.getAbscissas()[0];
@@ -1094,6 +1096,8 @@ $(function() {
                 //console.log(period.getId());
             });
             intervals.disable();
+            $('.ui-slider-control-plus,.ui-slider-control-minus').hide();
+
         }
     });
 

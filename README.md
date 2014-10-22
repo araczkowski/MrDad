@@ -8,9 +8,11 @@ Live example at jsFiddle http://jsfiddle.net/araczkowski/et4dmz1w/embedded/resul
 TODO
 ===========================
 
-***rewriting and optimization the codes***
-
 ***improve CSS - font awesome instead of png items***
+
+***add output info - widget state***
+
+***rewriting and optimization the codes***
 
 ***tests in Browsers (IE, FireFox, Chrome)***
 

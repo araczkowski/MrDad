@@ -1,8 +1,3 @@
-/*
-http://s7.postimg.org/c5vsmci0n/add_icon.png
-http://s30.postimg.org/5mr87i2jx/scroll_icon.png
-*/
-
 .content {
     margin: 30px;
     width: 96%;
@@ -30,37 +25,21 @@ http://s30.postimg.org/5mr87i2jx/scroll_icon.png
     right: 1px;
     line-height: 26px;
 }
-.ui-slider-control-plus {
-    background: url(http://s7.postimg.org/c5vsmci0n/add_icon.png) 50% 50% repeat-x !important;
+.ui-slider-control-plus:after {
+    content: "\f196";
+    font-family: FontAwesome;
+    font-size: 1em;
+    color: #43838c;
 }
 .ui-slider-control-minus:after {
-    content: "x";
+    content: "\f00d";
+    font-family: FontAwesome;
+    font-size: 1em;
 }
 .ui-slider-control-minus,
 .ui-slider-control-plus,
 .ui-slider-handle {
     cursor: pointer;
-}
-.ui-slider-handle.arrow-left,
-.ui-slider-handle.arrow-right {
-    width: 0;
-    height: 0;
-    border: none;
-    background: none;
-    outline: none;
-    cursor: pointer;
-}
-.ui-slider-handle.arrow-left {
-    margin-left: -16px;
-    border-top: 0.8em solid transparent;
-    border-bottom: 0.8em solid transparent;
-    border-right: 0.8em solid #e6e6e6;
-}
-.ui-slider-handle.arrow-right {
-    margin-left: 0px;
-    border-top: 0.8em solid transparent;
-    border-bottom: 0.8em solid transparent;
-    border-left: 0.8em solid #e6e6e6;
 }
 #slider {
     width: 96%;
@@ -95,24 +74,56 @@ http://s30.postimg.org/5mr87i2jx/scroll_icon.png
     margin-left: -.6em;
     margin-top: -20px;
     text-align: center;
+    color: #43838c;
 }
 .ui-slider-handle {
-    background: url(http://s30.postimg.org/5mr87i2jx/scroll_icon.png) 50% 50% repeat-x !important;
+    background: none !important;
     font-weight: normal !important;
     border: none !important;
 }
-.ui-slider-handle {
-    width: 20px !important;
-    height: 24px !important;
+.ui-slider-handle:after {
+    content: "\f053\f111\f054";
+    font-family: FontAwesome;
+    font-size: 1em;
+    color: #43838c;
+    text-decoration: none;
+}
+.ui-slider-horizontal {
+    height: .7em;
+}
+.ui-slider-horizontal .ui-slider-handle {
+    top: -.2em;
+    margin-left: -1.1em;
+}
+.ui-slider-disabled .ui-slider-handle:after {
+    content: "\f111";
+}
+.ui-slider-disabled .ui-slider-handle {
+    top: -.2em;
+    margin-left: -.4em;
+}
+.ui-slider .ui-slider-handle {
+    text-decoration: none;
 }
 .ui-widget-content {
     border: 0px !important;
 }
+.handle_label:hover {
+    font-size: large;
+    background: rgba(67, 131, 140, 0.31);
+    margin-top: 1em;
+    color: white;
+    font-weight: bold;
+    padding: .5em;
+    -moz-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+}
 .handle_label {
     font-size: x-small;
     position: absolute;
-    margin-top: 20px;
-    color: black;
+    margin-top: 2em;
+    margin-left: .8em;
+    color: #43838c;
 }
 /*blocks*/
 
@@ -174,9 +185,7 @@ div.planned-block-end {
 }
 div.draggable-block .handle {
     height: 30%;
-    border-bottom: 2px dashed #999;
-    border-right: 2px dashed #999;
-    cursor: copy;
+    cursor: move;
 }
 .block30 .handle {
     width: 100%;
@@ -196,4 +205,9 @@ div.draggable-block .handle {
     padding: 0px 2px;
     line-height: 1;
     cursor: pointer;
+}
+.fa {
+    display: table-caption;
+    margin: .2em;
+    color: #43838c;
 }

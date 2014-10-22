@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <!-- build:css styles/vendor.css -->
     <link rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css">
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
@@ -18,9 +19,10 @@
 </head>
 
 <body>
-    <p>Select work mode:
+    <p>Select widget mode:
         <input type="radio" name="rangeWorkMode" value="general">General ranges
         <input type="radio" name="rangeWorkMode" value="hours">Hours blocks
+        <br>
     </p>
     <div id="content" class="content">
 
@@ -180,13 +182,16 @@
 
         <div id="blocks" class="source">
             <div id="block30" class="ui-state-highlight draggable-block template block30">
-                <div class="handle"></div>
+                <span class="handle"><i class="fa fa-arrows"></i>
+                </span>
             </div>
             <div id="block60" class="ui-state-highlight draggable-block template block60">
-                <div class="handle"></div>
+                <span class="handle"><i class="fa fa-arrows"></i>
+                </span>
             </div>
             <div id="block120" class="ui-state-highlight draggable-block template block120">
-                <div class="handle"></div>
+                <span class="handle"><i class="fa fa-arrows"></i>
+                </span>
             </div>
         </div>
     </div>
@@ -195,8 +200,8 @@
     <!-- bower:js -->
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
-
     <!-- endbower -->
+
     <!-- endbuild -->
 
 
