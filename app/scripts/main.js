@@ -1094,8 +1094,11 @@ $(function() {
 
 
     $('input[type=radio][name=rangeWorkMode]').change(function() {
-        if (this.value === 'general') {
-            $('.step,.empty').removeClass('empty');
+
+        if (this.value === 'ranges') {
+            location.reload();
+
+            /*$('.step,.empty').removeClass('empty');
             $('.planned-block-body').removeClass('planned-block-body');
             $('.planned-block-start').removeClass('planned-block-start');
             $('.planned-block-end').removeClass('planned-block-end');
@@ -1104,8 +1107,9 @@ $(function() {
             $('div.source').hide();
             intervals.enable();
             $('.ui-slider-control-plus,.ui-slider-control-minus').show();
+            */
 
-        } else if (this.value === 'hours') {
+        } else if (this.value === 'blocks') {
             $('div.source').show();
             intervals.getPeriods().forEach(function(period) {
                 var startId = period.getAbscissas()[0];
@@ -1124,5 +1128,6 @@ $(function() {
     });
 
     //select the mode after load
-    $('input:radio[name=rangeWorkMode][value=general]').click();
+    //$('input:radio[name=rangeWorkMode][value=ranges]').click();
+    $('div.source').hide();
 });

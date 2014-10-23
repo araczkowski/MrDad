@@ -10,7 +10,7 @@ TODO
 
 ***improve CSS - font awesome instead of png items***
 
-***add output info - widget state***
+***add output info - widget status***
 
 ***rewriting and optimization the codes***
 

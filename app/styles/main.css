@@ -52,22 +52,18 @@
 }
 .steps {
     position: relative;
-    height: 50px;
+    height: 60px;
     /*margin-bottom: 5px;*/
 }
 .step {
     float: left;
     background-color: #43838c;
     width: 2%;
-    height: 50px;
+    height: 60px;
     border: 1px solid #43838c;
-    /* set padding to simulate border */
     -webkit-box-sizing: border-box;
-    /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;
-    /* Firefox, other Gecko */
     box-sizing: border-box;
-    /* Opera/IE 8+ */
 }
 .step_content {
     background-color: #e9f4f8;
@@ -82,30 +78,41 @@
     color: #43838c;
 }
 .ui-slider-handle {
-    background: none !important;
-    font-weight: normal !important;
-    border: none !important;
+    background-color: #e9f4f8;
+    border: 1px solid #43838c !important;
 }
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+    background: none;
+    background-color: #43838c;
+}
+/*
 .ui-slider-handle:after {
-    /*content: "\f053\f111\f054";*/
     content: "\f111";
     font-family: FontAwesome;
     font-size: 1em;
     color: #43838c;
     text-decoration: none;
 }
+*/
+
 .ui-slider-horizontal .ui-slider-handle {
-    top: -.14em;
-    margin-left: -.4em;
+    /*   top: -.14em;
+    margin-left: -.4em;  */
 }
-.ui-slider-disabled .ui-slider-handle:after {
-    content: "";
+.ui-slider-disabled .ui-slider-handle {
+    visibility: hidden;
 }
 /*
 .ui-slider-disabled .ui-slider-handle {
     top: -.2em;
     margin-left: -.4em;
-}*/
+}
+*/
 
 .ui-slider .ui-slider-handle {
     text-decoration: none;
@@ -113,22 +120,33 @@
 .ui-widget-content {
     border: 0px !important;
 }
+/*
 .handle_label:hover {
     font-size: large;
     background: rgba(67, 131, 140, 0.31);
-    margin-top: 1em;
     color: white;
     font-weight: bold;
     padding: .5em;
     -moz-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-}
+}*/
+
 .handle_label {
-    font-size: x-small;
     position: absolute;
-    margin-top: 1.8em;
-    margin-left: -.6em;
+    font-size: .9em;
+    margin-top: -2.5em;
+    margin-left: -.8em;
     color: #43838c;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    /* Newer browsers (incl IE9) */
+    background: rgba(67, 131, 140, .8);
+    padding: .2em;
+    -moz-border-radius: 3px 3px 3px 3px;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
 }
 /*blocks*/
 
