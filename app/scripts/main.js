@@ -512,7 +512,7 @@
         }
 
         function _rebuildControls() {
-            _slider.find('.' + SELECTORS.control['class'] + '-plus,.' + SELECTORS.control['class'] + '-minus').remove();
+            _slider.find('.' + SELECTORS.control['claaddControlss'] + '-plus,.' + SELECTORS.control['class'] + '-minus').remove();
 
             var addControl = function(type, identifier) {
                 var key;
@@ -618,9 +618,9 @@
                     if ((edges[0] - prevValue) >= _options.gap) {
                         showControl('plus', prevIdentifier, (prevValue - _options.min + (edges[0] - prevValue) / 2));
                     }
-                    if ((edges[1] - edges[0]) >= _options.gap) {
-                        showControl('minus', identifier, (edges[0] - _options.min + (edges[1] - edges[0]) / 2));
-                    }
+                    //if ((edges[1] - edges[0]) >= _options.gap) {
+                    showControl('minus', identifier, (edges[0] - _options.min + (edges[1] - edges[0]) / 2));
+                    //}
                     prevValue = edges[1];
                     prevIdentifier = identifier;
                 }
