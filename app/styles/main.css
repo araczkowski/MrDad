@@ -156,6 +156,7 @@
 div.source {
     width: 100%;
     margin-top: 30px;
+    height: 60px;
 }
 div.template {
     margin-right: 10px;
@@ -163,7 +164,7 @@ div.template {
 }
 div.draggable-block {
     background: rgba(204, 232, 119, 0.3);
-    height: 50px;
+    height: 60px;
     font-size: 14px;
     border: 1px solid #43838c;
     -webkit-box-sizing: border-box;
@@ -236,4 +237,18 @@ div.draggable-block .handle {
     display: table-caption;
     margin: .2em;
     color: #43838c;
+}
+/* console */
+
+div.console {
+    margin-top: 30px;
+    background: #000;
+    border: 3px groove #ccc;
+    color: #ccc;
+    display: block;
+    padding: 5px;
+    width: 300px;
+    margin: 30px;
+    min-height: 90px;
+    color: rgba(109, 255, 5, 0.92);
 }
