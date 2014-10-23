@@ -33,8 +33,8 @@
             min: 0,
             max: 1440,
             step: 30,
-            gap: 90,
-            newlength: 30,
+            gap: 150,
+            newlength: 90,
             disabled: false
         };
         var _deletePeriodConfirm = null,
@@ -908,6 +908,28 @@ var intervals;
 
 
 $(function() {
+
+    // to have indexOf working on an array in IE8
+    if (!Array.prototype.indexOf) {
+        Array.prototype.indexOf = function(obj, start) {
+            for (var i = (start || 0), j = this.length; i < j; i++) {
+                if (this[i] === obj) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+    }
+
+    // to have jQuery forEach in IE8
+    if (typeof Array.prototype.forEach != 'function') {
+        Array.prototype.forEach = function(callback) {
+            for (var i = 0; i < this.length; i++) {
+                callback.apply(this, [this[i], i, this]);
+            }
+        };
+    }
+
     intervals = new Intervals('#slider');
     intervals.addPeriod(580, 240);
 
@@ -966,7 +988,7 @@ $(function() {
         helper: 'clone',
         revert: 'invalid',
         //snap: '.steps .step',
-        handle: 'div.handle',
+        handle: 'span i.handle',
         greedy: true,
         reverting: function() {
             $('div.step').removeClass('highlightNOK');

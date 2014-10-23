@@ -3,6 +3,9 @@
     width: 96%;
     /*min-width: 1600px;*/
 }
+..ui-slider-horizontal {
+    height: 2em;
+}
 .ui-slider-horizontal .ui-slider-range {
     background-color: #ff930f;
 }
@@ -20,10 +23,7 @@
     position: absolute;
     width: 26px;
     height: 26px;
-    color: #fff;
     text-align: center;
-    right: 1px;
-    line-height: 26px;
 }
 .ui-slider-control-plus:after {
     content: "\f196";
@@ -35,11 +35,12 @@
     content: "\f00d";
     font-family: FontAwesome;
     font-size: 1em;
+    color: #fff;
 }
 .ui-slider-control-minus,
 .ui-slider-control-plus,
 .ui-slider-handle {
-    cursor: pointer;
+    cursor: pointer !important;
 }
 #slider {
     width: 96%;
@@ -47,7 +48,7 @@
 .steps {
     position: relative;
     height: 50px;
-    margin-bottom: 5px;
+    /*margin-bottom: 5px;*/
 }
 .step {
     float: left;
@@ -82,26 +83,26 @@
     border: none !important;
 }
 .ui-slider-handle:after {
-    content: "\f053\f111\f054";
+    /*content: "\f053\f111\f054";*/
+    content: "\f111";
     font-family: FontAwesome;
     font-size: 1em;
     color: #43838c;
     text-decoration: none;
 }
-.ui-slider-horizontal {
-    height: .7em;
-}
 .ui-slider-horizontal .ui-slider-handle {
-    top: -.2em;
-    margin-left: -1.1em;
+    top: -.14em;
+    margin-left: -.4em;
 }
 .ui-slider-disabled .ui-slider-handle:after {
-    content: "\f111";
+    content: "";
 }
+/*
 .ui-slider-disabled .ui-slider-handle {
     top: -.2em;
     margin-left: -.4em;
-}
+}*/
+
 .ui-slider .ui-slider-handle {
     text-decoration: none;
 }
@@ -121,8 +122,8 @@
 .handle_label {
     font-size: x-small;
     position: absolute;
-    margin-top: 2em;
-    margin-left: .8em;
+    margin-top: 1.8em;
+    margin-left: -.6em;
     color: #43838c;
 }
 /*blocks*/
@@ -138,9 +139,6 @@ div.template {
 div.draggable-block {
     background: rgba(204, 232, 119, 0.3);
     height: 50px;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 50px;
     font-size: 14px;
     border: 1px solid #43838c;
     -webkit-box-sizing: border-box;
@@ -187,14 +185,14 @@ div.draggable-block .handle {
     height: 30%;
     cursor: move;
 }
-.block30 .handle {
+.block30 span.handle {
     width: 100%;
 }
-.block60 .handle {
+.block60 span.handle {
     width: 50%;
 }
-.block120 .handle {
-    width: 25%;
+.block120 span.handle {
+    width: 1em;
 }
 .step_content .closer {
     display: block;

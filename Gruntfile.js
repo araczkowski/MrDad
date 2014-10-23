@@ -300,6 +300,13 @@ module.exports = function(grunt) {
                 cwd: '<%= config.app %>/styles',
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
+            },
+            fonts: {
+                expand: true,
+                dot: true,
+                cwd: '<%= config.app %>/bower_components/components-font-awesome/fonts',
+                dest: '<%= config.dist %>/fonts',
+                src: '*.*'
             }
         },
 
@@ -313,6 +320,7 @@ module.exports = function(grunt) {
             ],
             dist: [
                 'copy:styles',
+                'copy:fonts',
                 'imagemin',
                 'svgmin'
             ]
