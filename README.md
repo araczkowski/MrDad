@@ -8,7 +8,6 @@ Live example at jsFiddle http://jsfiddle.net/araczkowski/et4dmz1w/embedded/resul
 TODO
 ===========================
 
-***improve CSS - font awesome instead of png items***
 
 ***add output info - widget status***
 

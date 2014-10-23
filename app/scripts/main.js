@@ -1096,18 +1096,18 @@ $(function() {
     $('input[type=radio][name=rangeWorkMode]').change(function() {
 
         if (this.value === 'ranges') {
-            location.reload();
+            //location.reload();
 
-            /*$('.step,.empty').removeClass('empty');
+            $('.step,.empty').removeClass('empty');
             $('.planned-block-body').removeClass('planned-block-body');
             $('.planned-block-start').removeClass('planned-block-start');
             $('.planned-block-end').removeClass('planned-block-end');
             $('div.step_content span.closer').remove();
 
             $('div.source').hide();
-            intervals.enable();
             $('.ui-slider-control-plus,.ui-slider-control-minus').show();
-            */
+            intervals.enable();
+
 
         } else if (this.value === 'blocks') {
             $('div.source').show();
@@ -1128,6 +1128,6 @@ $(function() {
     });
 
     //select the mode after load
-    //$('input:radio[name=rangeWorkMode][value=ranges]').click();
+    $('input:radio[name=rangeWorkMode][value=ranges]').click();
     $('div.source').hide();
 });
