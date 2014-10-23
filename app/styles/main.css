@@ -136,17 +136,20 @@
     font-size: .9em;
     margin-top: -2.5em;
     margin-left: -.8em;
-    color: #43838c;
+    /*apex
+    margin-top: -2.8em;
+    margin-left: -1em;
+    */
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -o-transform: rotate(90deg);
     transform: rotate(90deg);
     /* Newer browsers (incl IE9) */
-    background: rgba(67, 131, 140, .8);
+    background: rgba(255, 255, 255, 0.9);
     padding: .2em;
     -moz-border-radius: 3px 3px 3px 3px;
     border-radius: 3px 3px 3px 3px;
-    color: white;
+    color: #43838c;
 }
 /*blocks*/
 
