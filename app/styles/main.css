@@ -240,15 +240,17 @@ div.draggable-block .handle {
 }
 /* console */
 
-div.console {
-    margin-top: 30px;
+textarea#console {
     background: #000;
     border: 3px groove #ccc;
-    color: #ccc;
     display: block;
+    position: fixed;
+    left: 50%;
+    bottom: 10px;
+    height: 30%;
+    max-height: 50%;
+    margin-left: -250px;
     padding: 5px;
-    width: 300px;
-    margin: 30px;
     min-height: 90px;
     color: rgba(109, 255, 5, 0.92);
 }

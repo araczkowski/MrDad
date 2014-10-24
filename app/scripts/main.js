@@ -902,13 +902,9 @@
 
 })(window, jQuery);
 
-// custom code
-/* GLOBALS */
-var intervals;
 
-
+// special functionality for IE8
 $(function() {
-
     // to have indexOf working on an array in IE8
     if (!Array.prototype.indexOf) {
         Array.prototype.indexOf = function(obj, start) {
@@ -929,28 +925,45 @@ $(function() {
             }
         };
     }
+});
 
+
+
+
+// custom code
+/* GLOBALS */
+var intervals;
+
+
+$(function() {
+
+    // inicialization
     intervals = new Intervals('#slider');
     intervals.addPeriod(580, 240);
 
+
+    // to have a widget status on console and in case of confirmation
     intervals.setAddPeriodConfirmCallback(function(period, callback) {
         callback(function() {
-            return true; //confirm('Add period between ' + period.getAbscissas()[0] + ' and ' + period.getAbscissas()[1]);
+            //confirm('Add period between ' + period.getAbscissas()[0] + ' and ' + period.getAbscissas()[1]);
+            return true;
         }());
+        changeInWidget();
     });
 
     intervals.setDeletePeriodConfirmCallback(function(period, callback) {
         callback(function() {
-            return true; //
             //return confirm('Delete period between ' + minutesToStr(period.getAbscissas()[0]) + ' and ' + minutesToStr(period.getAbscissas()[1]));
+            return true;
         }());
+        changeInWidget();
     });
 
+    intervals.setOnHandleSlideCallback(changeInWidget);
+    intervals.setOnHandleMouseenterCallback(changeInWidget);
+    //
 
-    //intervals.setOnHandleSlideCallback(addLabels);
-    //intervals.setOnHandleMouseenterCallback(addLabels);
-
-    // to have status on revert
+    // to have info/status on revert
     // http://stackoverflow.com/questions/1853230/jquery-ui-draggable-event-status-on-revert
     $.ui.draggable.prototype._mouseStop = function(event) {
         //If we are using droppables, inform the manager about the drop
@@ -981,7 +994,7 @@ $(function() {
         return false;
     };
     //
-
+    // Draggable
     $('div.draggable-block').draggable({
         //connectToSortable: '#top_container_for_blocks',
         appendTo: 'body',
@@ -1003,8 +1016,8 @@ $(function() {
     });
 
 
-
-
+    //
+    // Droppabe
     $('.steps .step').droppable({
         tolerance: 'pointer',
         revert: true,
@@ -1057,17 +1070,20 @@ $(function() {
                 if (i === 0) {
                     bSteps[i].addClass('planned-block-start');
                     bSteps[i].find('div').prepend('<span class="closer"><i class="fa fa-times"></i></span>');
+                    bSteps[i].attr('data-minutes', div.draggable.attr('data-minutes'));
                 }
 
                 if (i === nSteps - 1) {
                     bSteps[i].addClass('planned-block-end');
                 }
             }
+            //
+            changeInWidget();
 
         }
 
     });
-
+    // to get array with currently hovered divs
     function getHoveredDivs(firstElement, blockDiv, className, nSteps) {
         var hoveredDivs = [];
         for (var i = 0; i < nSteps; i++) {
@@ -1077,22 +1093,27 @@ $(function() {
             }
         }
         return hoveredDivs;
-
     }
 
     $('div.draggable, .steps .step').disableSelection();
 
 
+    // to remove the blocks from slider
     $('.step_content').on('click', '.closer', function() {
         var item = $(this).closest('.step');
         var no = item.attr('id').replace('step_', '');
         var selector = '.planned-block-step_' + no;
         $(selector).removeClass('planned-block-body').removeClass('planned-block-start').removeClass('planned-block-end').addClass('empty');
         $(selector).find($('.closer')).remove();
+        $(selector).attr("data-minutes", "");
+
+        changeInWidget();
+
 
     });
 
 
+    // after select the working mode
     $('input[type=radio][name=rangeWorkMode]').change(function() {
 
         if (this.value === 'ranges') {
@@ -1103,7 +1124,6 @@ $(function() {
             $('.planned-block-start').removeClass('planned-block-start');
             $('.planned-block-end').removeClass('planned-block-end');
             $('div.step_content span.closer').remove();
-
             $('div.source').hide();
             $('.ui-slider-control-plus,.ui-slider-control-minus').show();
             intervals.enable();
@@ -1119,15 +1139,52 @@ $(function() {
                     var selector = '#step_' + (Number(startId) / 30 + 1 + i);
                     $(selector).addClass('empty');
                 }
-                //console.log(period.getId());
             });
             intervals.disable();
             $('.ui-slider-control-plus,.ui-slider-control-minus').hide();
-
         }
     });
 
-    //select the mode after load
+    //preselect the mode after load
     $('input:radio[name=rangeWorkMode][value=ranges]').click();
     $('div.source').hide();
+
+
+    // output to console
+    function changeInWidget() {
+        var con = $('textarea#console');
+        var out = {};
+
+        if ($('input[type=radio][name=rangeWorkMode]:checked').val() === 'ranges') {
+            var _intervals = intervals.getPeriods();
+            var ranges = [];
+            if (_intervals.length > 0) {
+                _intervals.forEach(function(_interval) {
+                    var range = {};
+                    range.id = _interval.getId();
+                    range.start = _interval.getAbscissas()[0];
+                    range.stop = _interval.getAbscissas()[1];
+                    ranges.push(range);
+                });
+                out.ranges = ranges;
+            }
+
+        } else {
+            var _blocks = $('.planned-block-start');
+            var blocks = [];
+
+            if (_blocks.length > 0) {
+                _blocks.each(function(i, e) {
+                    var block = {};
+                    block.id = e.getAttribute('id');
+                    block.value = e.getAttribute('data-minutes');
+                    blocks.push(block);
+                });
+            }
+            out.blocks = blocks;
+        }
+        con.val(JSON.stringify(out, undefined, 4));
+
+    };
+
 });
