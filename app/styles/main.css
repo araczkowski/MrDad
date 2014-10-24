@@ -252,5 +252,6 @@ textarea#console {
     margin-left: -250px;
     padding: 5px;
     min-height: 90px;
+    color: green; //IE8
     color: rgba(109, 255, 5, 0.92);
 }

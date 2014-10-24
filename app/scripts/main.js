@@ -24,6 +24,9 @@
      *      @property {Number} userOptions.gap Minimum gap between handles when add/remove range controls are visible
      *      @property {Number} userOptions.newlength Default length for newly created range. Will be adjusted between surrounding handles if not fitted
      *      @property {Boolean} userOptions.disabled Slider disability flag
+     *      @property {Object} userOptions.handleLabelDispFormat intervals handle label format default hh24:mi
+     *      @property {Object} userOptions.stepLabelDispFormat steps label format default hh24
+     *      @property {Boolean} userOptions.showScale to show or not div with scale
      * }
      */
     w.Intervals = function(selector, userOptions) {
@@ -35,7 +38,19 @@
             step: 30,
             gap: 150,
             newlength: 90,
-            disabled: false
+            disabled: false,
+            handleLabelDispFormat: function(steps) {
+                var hours = Math.floor(Math.abs(steps) / 60);
+                var minutes = Math.abs(steps) % 60;
+                return ((hours < 10 && hours >= 0) ? '0' : '') + hours + ':' + ((minutes < 10 && minutes >= 0) ? '0' : '') + minutes;
+            },
+            stepLabelDispFormat: function(steps) {
+                var hours = Math.floor(Math.abs(steps) / 60);
+                return Math.abs(steps) % 60 === 0 ? ((hours < 10 && hours >= 0) ? '0' : '') + hours : '';
+            },
+            showScale: true,
+            showBlocksToolbar: true
+
         };
         var _deletePeriodConfirm = null,
             _addPeriodConfirm = null,
@@ -118,7 +133,38 @@
             _slider = $(selector);
             _initEvents();
             _build();
+            if (_options.showScale) {
+                _addScale();
+            }
+            if (_options.showBlocksToolbar) {
+                _addBlocksToolbar();
+            }
+
+
         }
+
+        function _addScale() {
+            $(selector).parent().prepend('<div id="steps" class="steps"></div>');
+            var eSteps = $('#steps');
+            var nSteps = (_options.max - _options.min) / _options.step;
+
+
+            for (var i = 0; nSteps > i; i++) {
+                $('<div/>', {
+                    id: 'step_' + (Number(i) + 1),
+                    class: 'step',
+                    "data-start": i * 30,
+                    html: '<span class="tick">' + _options.stepLabelDispFormat(i * 30) + '</span><div class="step_content"></div></div>'
+                }).appendTo(eSteps);
+            }
+        };
+
+        function _addBlocksToolbar() {
+            $(selector).parent().append('<div id="blocks" class="source"></div>');
+
+        };
+
+
 
         function _initEvents() {
             _options.create = function(event, ui) {
@@ -641,7 +687,7 @@
             for (var index in values) {
 
 
-                handles.eq(index).html('<span class="handle_label">' + _minutesToStr(values[index]) + '</span>');
+                handles.eq(index).html('<span class="handle_label">' + _options.handleLabelDispFormat(values[index]) + '</span>');
 
                 //
                 if (values[index] === prevSibling) {
@@ -653,18 +699,20 @@
             _toggleHandles(values.length);
         }
 
+        this.addBlocksToTolbar = function(blocksArray) {
+            var eBlocks = $('#blocks');
+            for (var i = 0; i < blocksArray.length; i++) {
+                $('<div/>', {
+                    id: 'block' + blocksArray[i].value,
+                    class: 'draggable-block template block' + blocksArray[i].value,
+                    "data-value": blocksArray[i].value,
+                    html: '<span> <i class = "fa fa-arrows handle" ></i></span>'
+                }).appendTo(eBlocks);
+            }
 
-        function _minutesToStr(minutes) {
-            var hours = _leftPad(Math.floor(Math.abs(minutes) / 60));
-            minutes = _leftPad(Math.abs(minutes) % 60);
-            return hours + ':' + minutes;
-        }
-        /*
-         * add zero to numbers less than 10,Eg: 2 -> 02
-         */
-        function _leftPad(number) {
-            return ((number < 10 && number >= 0) ? '0' : '') + number;
-        }
+            return this;
+        };
+
 
         /**
          * Adds single period to this intervals instance and rebuilds the slider
@@ -692,6 +740,16 @@
             }
             _rebuild();
             return this;
+        };
+
+        /**
+         * Get options
+         * @return {Object}
+         */
+        this.getOptions = function() {
+
+            return _options;
+
         };
 
         /**
@@ -939,7 +997,23 @@ $(function() {
 
     // inicialization
     intervals = new Intervals('#slider');
-    intervals.addPeriod(580, 240);
+    //var iOptions = intervals.getOptions();
+
+
+    // test data TODO - definition from the DB
+    intervals.addPeriod(660, 90);
+    intervals.addBlocksToTolbar([{
+        value: 30
+    }, {
+        value: 60
+    }, {
+        value: 120
+    }]);
+
+    // TODO
+    // intervals.addBlockToScale({});
+    // intervals.removeBlockFromScale({});
+
 
 
     // to have a widget status on console and in case of confirmation
@@ -1028,7 +1102,7 @@ $(function() {
             $('div.step').removeClass('highlightNOK');
             $('div.step').removeClass('highlightOK');
 
-            var nSteps = (div.draggable.attr('id').replace('block', '') / 30);
+            var nSteps = (div.draggable.attr('data-value') / 30);
             var list = getHoveredDivs($(this), div, 'step', nSteps);
             var list2 = getHoveredDivs($(this), div, 'empty', nSteps);
             if (nSteps !== list2.length) {
@@ -1045,43 +1119,28 @@ $(function() {
             //
             $('div.step').removeClass('highlightNOK');
             $('div.step').removeClass('highlightOK');
-
-
-            //var x = $(this).width();
-            //var y = div.draggable.width();
-
-
-            var nSteps = (div.draggable.attr('id').replace('block', '') / 30);
+            var nSteps = (div.draggable.attr('data-value') / 30);
             var bSteps = getHoveredDivs($(this), div, 'empty', nSteps);
-
             if (bSteps.length !== nSteps) {
                 div.draggable.effect('shake', {}, 300);
                 return;
             }
-
-
             for (var i = 0; i < nSteps; i++) {
                 bSteps[i].removeClass('empty');
-
                 bSteps[i].addClass('planned-block-body');
                 bSteps[i].addClass('planned-block-' + $(this).attr('id'));
-
-
                 if (i === 0) {
                     bSteps[i].addClass('planned-block-start');
                     bSteps[i].find('div').prepend('<span class="closer"><i class="fa fa-times"></i></span>');
-                    bSteps[i].attr('data-minutes', div.draggable.attr('data-minutes'));
+                    bSteps[i].attr('data-value', div.draggable.attr('data-value'));
                 }
 
                 if (i === nSteps - 1) {
                     bSteps[i].addClass('planned-block-end');
                 }
             }
-            //
             changeInWidget();
-
         }
-
     });
     // to get array with currently hovered divs
     function getHoveredDivs(firstElement, blockDiv, className, nSteps) {
@@ -1105,7 +1164,7 @@ $(function() {
         var selector = '.planned-block-step_' + no;
         $(selector).removeClass('planned-block-body').removeClass('planned-block-start').removeClass('planned-block-end').addClass('empty');
         $(selector).find($('.closer')).remove();
-        $(selector).attr("data-minutes", "");
+        $(selector).attr("data-value", "");
 
         changeInWidget();
 
@@ -1163,7 +1222,7 @@ $(function() {
                     var range = {};
                     range.id = _interval.getId();
                     range.start = _interval.getAbscissas()[0];
-                    range.stop = _interval.getAbscissas()[1];
+                    range.value = _interval.getAbscissas()[1] - _interval.getAbscissas()[0];
                     ranges.push(range);
                 });
                 out.ranges = ranges;
@@ -1177,7 +1236,8 @@ $(function() {
                 _blocks.each(function(i, e) {
                     var block = {};
                     block.id = e.getAttribute('id');
-                    block.value = e.getAttribute('data-minutes');
+                    block.start = e.getAttribute('data-start');
+                    block.value = e.getAttribute('data-value');
                     blocks.push(block);
                 });
             }
