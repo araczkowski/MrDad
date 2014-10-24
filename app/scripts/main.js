@@ -151,10 +151,10 @@
 
             for (var i = 0; nSteps > i; i++) {
                 $('<div/>', {
-                    id: 'step_' + (Number(i) + 1),
-                    class: 'step',
-                    "data-start": i * 30,
-                    html: '<span class="tick">' + _options.stepLabelDispFormat(i * 30) + '</span><div class="step_content"></div></div>'
+                    'id': 'step_' + (Number(i) + 1),
+                    'class': 'step',
+                    'data-start': i * 30,
+                    'html': '<span class="tick">' + _options.stepLabelDispFormat(i * 30) + '</span><div class="step_content"></div></div>'
                 }).appendTo(eSteps);
             }
         };
@@ -703,10 +703,10 @@
             var eBlocks = $('#blocks');
             for (var i = 0; i < blocksArray.length; i++) {
                 $('<div/>', {
-                    id: 'block' + blocksArray[i].value,
-                    class: 'draggable-block template block' + blocksArray[i].value,
-                    "data-value": blocksArray[i].value,
-                    html: '<span> <i class = "fa fa-arrows handle" ></i></span>'
+                    'id': 'block' + blocksArray[i].value,
+                    'class': 'draggable-block template block' + blocksArray[i].value,
+                    'data-value': blocksArray[i].value,
+                    'html': '<span> <i class = "fa fa-arrows handle" ></i></span>'
                 }).appendTo(eBlocks);
             }
 

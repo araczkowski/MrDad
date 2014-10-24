@@ -163,6 +163,7 @@ div.template {
     float: left;
 }
 div.draggable-block {
+    background: #e3ecb0; //IE8
     background: rgba(204, 232, 119, 0.3);
     height: 60px;
     font-size: 14px;
