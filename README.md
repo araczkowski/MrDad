@@ -1,15 +1,12 @@
-MultiRangeSlider
+MultiRangeDragAndDrop -> MrDad
 ===================
 
-Extends jquery-ui slider widget to include multiple ranges within a single slider
+Extends jquery-ui slider widget to include multiple ranges and combine it with the blocks drag & drop interaction.
 
 Live example at jsFiddle http://jsfiddle.net/araczkowski/et4dmz1w/embedded/result/ http://jsfiddle.net/araczkowski/et4dmz1w/
 
 TODO
 ===========================
-
-
-***add output info - widget status***
 
 ***rewriting and optimization the codes***
 
@@ -36,12 +33,12 @@ bower install
 grunt serve
 ```
 
-Intervals class constructor
+MrDad class constructor
 ===========================
-**Intervals**
+**MrDad**
 ```javascript
 /**
- * @class Intervals
+ * @class MrDad
  * @constructor
  * @param {String} selector jQuery selector
  * @param {Object} userOptions (optional) Custom options object that overrides default
@@ -55,35 +52,35 @@ Intervals class constructor
  * }
  */
 
-window.Intervals = function(selector, userOptions) {}
+window.MrDad = function(selector, userOptions) {}
 ```
 
 
-Intervals class interface
+MrDad class interface
 =========================
 
 **addPeriod**
 ```javascript
 /**
- * Adds single period to this intervals instance and rebuilds the slider
+ * Adds single period to this MrDad instance and rebuilds the slider
  * @param {Number} start - start point for the period
  * @param {Number} length - the length for the period
  * @return {Object|null}
  */
 
-Intervals.addPeriod = function(start, length) {}
+MrDad.addPeriod = function(start, length) {}
 ```
 
 =
 **addPeriods**
 ```javascript
 /**
- * Adds multiple periods and rebuilds the intervals slider
+ * Adds multiple periods and rebuilds the MrDad slider
  * @param {Array} periodsArray example: Array([[0,20],[40,60]...])
- * @return {Object} self instance of am.Intervals class
+ * @return {Object} self instance of am.MrDad class
  */
 
-Intervals.addPeriods = function(periodsArray) {}
+MrDad.addPeriods = function(periodsArray) {}
 ```
 
 =
@@ -95,18 +92,18 @@ Intervals.addPeriods = function(periodsArray) {}
  * @return {Object}
  */
 
-Intervals.getPeriod = function(id) {}
+MrDad.getPeriod = function(id) {}
 ```
 
 =
 **getPeriods**
 ```javascript
 /**
- * Gets all periods for this intervals instance
+ * Gets all periods for this MrDad instance
  * @return {Array} of each period.toPublic() object
  */
 
-Intervals.getPeriods = function() {}
+MrDad.getPeriods = function() {}
 ```
 
 =
@@ -118,7 +115,7 @@ Intervals.getPeriods = function() {}
  * @return {Boolean}
  */
 
-Intervals.isValidPeriod = function(id, abscissas) {}
+MrDad.isValidPeriod = function(id, abscissas) {}
 ```
 
 =
@@ -127,10 +124,10 @@ Intervals.isValidPeriod = function(id, abscissas) {}
 /**
  * @param {Number} id - period Id
  * @param {Array} abscissas as [a1, a2]
- * @return {Object} self instance of Intervals class
+ * @return {Object} self instance of MrDad class
  */
 
-Intervals.updatePeriod = function(id, abscissas) {}
+MrDad.updatePeriod = function(id, abscissas) {}
 ```
 
 =
@@ -146,15 +143,15 @@ Intervals.updatePeriod = function(id, abscissas) {}
  *          2. callback result flag of boolean
  *
  * @example
- *      intervals.setDeletePeriodConfirmCallback(function(period, callback) {
+ *      MrDad.setDeletePeriodConfirmCallback(function(period, callback) {
  *          callback(function() {
  *             return confirm('Delete period between ' + period.getAbscissas()[0] + ' and ' + period.getAbscissas()[1] + ' ?');
  *          }());
  *      });
- * @return {Object} self instance of Intervals class
+ * @return {Object} self instance of MrDad class
  */
 
-Intervals.setDeletePeriodConfirmCallback = function(confirmFunction) {}
+MrDad.setDeletePeriodConfirmCallback = function(confirmFunction) {}
 ```
 
 =
@@ -170,15 +167,15 @@ Intervals.setDeletePeriodConfirmCallback = function(confirmFunction) {}
  *          2. callback result flag of boolean
  *
  * @example
- *      intervals.setAddPeriodConfirmCallback(function(period, callback) {
+ *      MrDad.setAddPeriodConfirmCallback(function(period, callback) {
  *          callback(function() {
  *             return confirm('Add period between ' + period.getAbscissas()[0] + ' and ' + period.getAbscissas()[1] + ' ?');
  *          }());
  *      });
- * @return {Object} self instance of Intervals class
+ * @return {Object} self instance of MrDad class
  */
 
-Intervals.setAddPeriodConfirmCallback = function(confirmFunction) {}
+MrDad.setAddPeriodConfirmCallback = function(confirmFunction) {}
 ```
 
 =
@@ -195,16 +192,16 @@ Intervals.setAddPeriodConfirmCallback = function(confirmFunction) {}
  *          3. edgeIndex - integer number[0-1] indicating left or right handle triggered
  *
  * @example
- *      intervals.setOnHandleMouseenterCallback(function(context, period, edgeIndex) {
+ *      MrDad.setOnHandleMouseenterCallback(function(context, period, edgeIndex) {
  *          var handlePosition = context.offset().left;
  *          var periodId = period.getId();
  *          var handleAbscissa = period.getAbscissas()[edgeIndex];
  *          //...
  *      });
- * @return {Object} self instance of Intervals class
+ * @return {Object} self instance of MrDad class
  */
 
-Intervals.setOnHandleMouseenterCallback = function(callbackFunction) {}
+MrDad.setOnHandleMouseenterCallback = function(callbackFunction) {}
 ```
 
 =
@@ -221,38 +218,38 @@ Intervals.setOnHandleMouseenterCallback = function(callbackFunction) {}
  *          3. edgeIndex - integer number[0-1] indicating left or right handle triggered
  *
  * @example
- *      intervals.setOnHandleSlideCallback(function(context, period, edgeIndex) {
+ *      MrDad.setOnHandleSlideCallback(function(context, period, edgeIndex) {
  *          var handlePosition = context.offset().left;
  *          var periodId = period.getId();
  *          var handleAbscissa = period.getAbscissas()[edgeIndex];
  *          //...
  *      });
- * @return {Object} self instance of Intervals class
+ * @return {Object} self instance of MrDad class
  */
 
-Intervals.setOnHandleSlideCallback = function(callbackFunction) {}
+MrDad.setOnHandleSlideCallback = function(callbackFunction) {}
 ```
 
 =
 **empty**
 ```javascript
 /**
- * Deletes all periods and rebuilds the intervals slider
- * @return {Object} self instance of Intervals class
+ * Deletes all periods and rebuilds the MrDad slider
+ * @return {Object} self instance of MrDad class
  */
 
-Intervals.empty = function() {}
+MrDad.empty = function() {}
 ```
 
 =
 **getSlider**
 ```javascript
 /**
- * Gets jQuery object associated with this intervals instance
+ * Gets jQuery object associated with this MrDad instance
  * @return {Object} jQuery object
  */
 
-Intervals.getSlider = function() {}
+MrDad.getSlider = function() {}
 ```
 
 =
@@ -263,7 +260,7 @@ Intervals.getSlider = function() {}
  * @return {Boolean}
  */
 
-Intervals.isDestroyed = function() {}
+MrDad.isDestroyed = function() {}
 ```
 
 =
@@ -274,7 +271,7 @@ Intervals.isDestroyed = function() {}
  * @return {Boolean}
  */
 
-Intervals.isDisabled = function() {}
+MrDad.isDisabled = function() {}
 ```
 
 =
@@ -282,10 +279,10 @@ Intervals.isDisabled = function() {}
 ```javascript
 /**
  * Enables slider
- * @return {Object} self instance of Intervals class
+ * @return {Object} self instance of MrDad class
  */
 
-Intervals.enable = function() {}
+MrDad.enable = function() {}
 ```
 
 =
@@ -293,10 +290,10 @@ Intervals.enable = function() {}
 ```javascript
 /**
  * Disables slider for user manipulations
- * @return {Object} self instance of Intervals class
+ * @return {Object} self instance of MrDad class
  */
 
-Intervals.disable = function() {}
+MrDad.disable = function() {}
 ```
 
 =========================
