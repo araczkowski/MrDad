@@ -182,8 +182,7 @@
                 $('.ui-slider-control-plus,.ui-slider-control-minus').hide();
             }
 
-        };
-
+        }
 
         function _addScale() {
             $(selector).parent().prepend('<div id="steps" class="steps"></div>');
@@ -197,7 +196,7 @@
                     'html': '<span class="tick">' + _options.stepLabelDispFormat(i * 30) + '</span><div class="step_content"></div></div>'
                 }).appendTo(eSteps);
             }
-        };
+        }
 
 
         function _addBlocksToTolbar(blocksArray) {
@@ -211,7 +210,7 @@
                 }).appendTo(eBlocks);
             }
             return this;
-        };
+        }
 
         function _createBlocksToolbar() {
             $(selector).parent().append('<div id="blocks" class="source"></div>');
@@ -293,8 +292,7 @@
                 }
                 return hoveredDivs;
             }
-
-        };
+        }
 
         function _addBlock(bSteps, value) {
 
@@ -323,7 +321,7 @@
             var selector = '.planned-block-' + step;
             $(selector).removeClass('planned-block-body').removeClass('planned-block-start').removeClass('planned-block-end').addClass('empty');
             $(selector).find($('.closer')).remove();
-            $(selector).attr("data-value", "");
+            $(selector).attr('data-value', '');
             if (typeof(_onDeleteBlock) === 'function') {
                 _onDeleteBlock();
             }
@@ -333,14 +331,6 @@
 
 
         function _initEvents() {
-            _options.create = function(event, ui) {
-
-            };
-
-            _options.change = function(event, ui) {
-
-            };
-
 
             _options.slide = function(event, ui) {
                 //
@@ -404,15 +394,7 @@
                 return onSlide();
             };
 
-            /*_options.start = function(event, ui) {
-
-            };
-
-            _options.stop = function(event, ui) {
-
-            };*/
-
-            _slider.on('mouseenter', '.' + SELECTORS.handle['class'], function(event) {
+            _slider.on('mouseenter', '.' + SELECTORS.handle['class'], function() {
                 if (typeof(_onHandleMouseenter) === 'function') {
                     var index = _slider.find('.' + SELECTORS.handle['class']).index($(this));
                     var key = _getPeriodKeyByIndex(index);
@@ -524,27 +506,6 @@
             return false;
         }
 
-        function _periodIntersectsOthers(periodId, abscissas) {
-            if (_periods.length === 1) {
-                return false;
-            }
-            var key = _getPeriodKey(periodId);
-            if (key !== -1) {
-                if (typeof _periods[key - 1] !== 'undefined') {
-                    if (_periods[key - 1].getAbscissas()[1] > abscissas[0]) {
-                        return true;
-                    }
-                }
-                if (typeof _periods[key + 1] !== 'undefined') {
-                    if (_periods[key + 1].getAbscissas()[0] < abscissas[1]) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-            throw 'Period not found';
-        }
-
         /**
          * Gets surrounding handles abscissas for the outranged point
          * @param {Number} abscissa - point out of any range
@@ -576,35 +537,18 @@
             return true;
         }
 
-        function _isValidPeriod(periodId, abscissas) {
-            var key = _getPeriodKey(periodId);
-            if (key !== -1 && _isValidParams(abscissas[0], abscissas[1] - abscissas[0]) && !_periodIntersectsOthers(periodId, abscissas)) {
-                return true;
-            }
-            return false;
-        }
-
-        function _updatePeriod(periodId, abscissas) {
-            if (_isValidPeriod(periodId, abscissas)) {
-                _periods[_getPeriodKey(periodId)].setAbscissas([_sanitizeValue(abscissas[0]), _sanitizeValue(abscissas[1])]);
-                _build(true);
-            }
-        }
-
         function _deletePeriod(periodId) {
             var i = _getPeriodKey(periodId);
             if (i !== -1) {
-                return !!_periods.splice(i, 1).length;
+
+                var ret = !! _periods.splice(i, 1).length;
+
+                if (typeof(_onDeletePeriod) === 'function') {
+                    _onDeletePeriod();
+                }
+                return ret;
             }
             return false;
-
-            if (typeof(_onDeletePeriod) === 'function') {
-                _onDeletePeriod();
-            }
-        }
-
-        function _deleteAllPeriods() {
-            _periods.length = 0;
         }
 
         function _sanitizeValue(value) {
@@ -1131,7 +1075,7 @@ $(function() {
                 }
             }
             return -1;
-        }
+        };
     }
 
     // to have jQuery forEach in IE8
@@ -1189,39 +1133,6 @@ var mrdad;
 
 $(function() {
 
-    // inicialization
-    mrdad = new MrDad('#slider');
-
-    // test data; TODO - definition from the DB
-    mrdad.addPeriods([
-        [660, 90],
-        [990, 120]
-    ]);
-
-    // test data; TODO - definition from the DB
-    mrdad.addBlocks([
-        [660, 30],
-        [990, 60]
-    ]);
-
-
-    mrdad.setOnHandleSlideCallback(changeInWidget);
-    mrdad.setOnHandleMouseenterCallback(changeInWidget);
-    mrdad.setAddBlockCallback(changeInWidget);
-    mrdad.setDeleteBlockCallback(changeInWidget);
-    mrdad.setAddPeriodCallback(changeInWidget);
-    mrdad.setDeletePeriodCallback(changeInWidget);
-
-
-    // after select the working mode
-    $('input[type=radio][name=rangeWorkMode]').change(function() {
-        mrdad.setMode(this.value);
-    });
-
-    //preselect the mode after load
-    mrdad.setMode('ranges');
-
-
     // output to console
     function changeInWidget() {
         var con = $('textarea#console');
@@ -1259,5 +1170,37 @@ $(function() {
         con.val(JSON.stringify(out, undefined, 4));
 
     }
+
+    // inicialization
+    mrdad = new MrDad('#slider');
+
+    // test data; TODO - definition from the DB
+    mrdad.addPeriods([
+        [660, 90],
+        [990, 120]
+    ]);
+
+    // test data; TODO - definition from the DB
+    mrdad.addBlocks([
+        [660, 30],
+        [990, 60]
+    ]);
+
+
+    mrdad.setOnHandleSlideCallback(changeInWidget);
+    mrdad.setOnHandleMouseenterCallback(changeInWidget);
+    mrdad.setAddBlockCallback(changeInWidget);
+    mrdad.setDeleteBlockCallback(changeInWidget);
+    mrdad.setAddPeriodCallback(changeInWidget);
+    mrdad.setDeletePeriodCallback(changeInWidget);
+
+
+    // after select the working mode
+    $('input[type=radio][name=rangeWorkMode]').change(function() {
+        mrdad.setMode(this.value);
+    });
+
+    //preselect the mode after load
+    mrdad.setMode('ranges');
 
 });
