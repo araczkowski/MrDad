@@ -1,4 +1,4 @@
-MultiRangeDragAndDrop -> MrDad
+MultiRange & DragAndDrop (MrDad)
 ===================
 
 Extends jquery-ui slider widget to include multiple ranges and combine it with the blocks drag & drop interaction.
@@ -8,7 +8,7 @@ Live example at jsFiddle http://jsfiddle.net/araczkowski/et4dmz1w/embedded/resul
 TODO
 ===========================
 
-***rewriting and optimization the codes***
+***finalizing the plugin API (constructor and methods)***
 
 ***tests in Browsers (IE, FireFox, Chrome)***
 
@@ -48,7 +48,10 @@ MrDad class constructor
  *      @property {Number} userOptions.step Slider sliding step
  *      @property {Number} userOptions.gap Minimum gap between handles when add/remove range controls are visible
  *      @property {Number} userOptions.newlength Default length for newly created range. Will be adjusted between surrounding handles if not fitted
- *      @property {Boolean} userOptions.disabled Slider disability flag
+ *      @property {Object} userOptions.handleLabelDispFormat mrdad handle label format default hh24:mi
+ *      @property {Object} userOptions.stepLabelDispFormat mrdad step Label format default hh24
+ *      @property {Array} userOptions.blocksToolbar  blocks definition for blocks toolbar blocksArray example: Array([{value: 30}, {value: 60}, {value: 120}...]) (we are expecting soon more information (like colour etc.)about blocks from DB, that is why blocks are objects)
+ *      @property {String} userOptions.mode pluugin work mode: ranges or blocks
  * }
  */
 
@@ -59,30 +62,34 @@ window.MrDad = function(selector, userOptions) {}
 MrDad class interface
 =========================
 
-**addPeriod**
-```javascript
-/**
- * Adds single period to this MrDad instance and rebuilds the slider
- * @param {Number} start - start point for the period
- * @param {Number} length - the length for the period
- * @return {Object|null}
- */
 
-MrDad.addPeriod = function(start, length) {}
-```
-
-=
 **addPeriods**
 ```javascript
 /**
  * Adds multiple periods and rebuilds the MrDad slider
- * @param {Array} periodsArray example: Array([[0,20],[40,60]...])
+ * @param {Array} periodsArray example: Array([[660, 90],[990, 120]...])
  * @return {Object} self instance of am.MrDad class
  */
 
 MrDad.addPeriods = function(periodsArray) {}
 ```
 
+**addBlocks**
+```javascript
+/**
+ * Adds multiple block to the slider scale
+ * @param {Array} blocksArray example: Array([[660, 30],[990, 60]...])
+ * @return {Object} self instance of MrDad class
+ */
+
+MrDad.addBlocks = function(periodsArray) {}
+```
+
+
+
+
+MrDad class interface continuation
+=========================
 =
 **getPeriod**
 ```javascript
@@ -104,30 +111,6 @@ MrDad.getPeriod = function(id) {}
  */
 
 MrDad.getPeriods = function() {}
-```
-
-=
-**isValidPeriod**
-```javascript
-/**
- * @param {Number} id - period Id
- * @param {Array[Number, Number]} abscissas as [a1, a2]
- * @return {Boolean}
- */
-
-MrDad.isValidPeriod = function(id, abscissas) {}
-```
-
-=
-**updatePeriod**
-```javascript
-/**
- * @param {Number} id - period Id
- * @param {Array} abscissas as [a1, a2]
- * @return {Object} self instance of MrDad class
- */
-
-MrDad.updatePeriod = function(id, abscissas) {}
 ```
 
 =
@@ -230,71 +213,6 @@ MrDad.setOnHandleMouseenterCallback = function(callbackFunction) {}
 MrDad.setOnHandleSlideCallback = function(callbackFunction) {}
 ```
 
-=
-**empty**
-```javascript
-/**
- * Deletes all periods and rebuilds the MrDad slider
- * @return {Object} self instance of MrDad class
- */
-
-MrDad.empty = function() {}
-```
-
-=
-**getSlider**
-```javascript
-/**
- * Gets jQuery object associated with this MrDad instance
- * @return {Object} jQuery object
- */
-
-MrDad.getSlider = function() {}
-```
-
-=
-**isDestroyed**
-```javascript
-/**
- * Checks if slider DOM element has been unwidgetized
- * @return {Boolean}
- */
-
-MrDad.isDestroyed = function() {}
-```
-
-=
-**isDisabled**
-```javascript
-/**
- * Checks if slider is disabled
- * @return {Boolean}
- */
-
-MrDad.isDisabled = function() {}
-```
-
-=
-**enable**
-```javascript
-/**
- * Enables slider
- * @return {Object} self instance of MrDad class
- */
-
-MrDad.enable = function() {}
-```
-
-=
-**disable**
-```javascript
-/**
- * Disables slider for user manipulations
- * @return {Object} self instance of MrDad class
- */
-
-MrDad.disable = function() {}
-```
 
 =========================
 
