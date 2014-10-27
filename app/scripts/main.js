@@ -308,7 +308,7 @@
                     bSteps[i].attr('data-value', value);
                 }
 
-                if (i === bSteps - 1) {
+                if (i === bSteps.length - 1) {
                     bSteps[i].addClass('planned-block-end');
                 }
             }

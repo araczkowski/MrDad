@@ -8,14 +8,12 @@ Live example at jsFiddle http://jsfiddle.net/araczkowski/et4dmz1w/embedded/resul
 TODO
 ===========================
 
-***finalizing the plugin API (constructor and methods)***
-
 ***tests in Browsers (IE, FireFox, Chrome)***
 
 ***integration with APEX (plugin)***
 
 
-How To Start
+How To Start (to develop the plugin)
 ===========================
 
 **NPM**
@@ -32,6 +30,7 @@ bower install
 ```javascript
 grunt serve
 ```
+
 
 MrDad class constructor
 ===========================
