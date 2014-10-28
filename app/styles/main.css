@@ -172,15 +172,6 @@ div.draggable-block {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.block30 {
-    width: 2%;
-}
-.block60 {
-    width: 4%;
-}
-.block120 {
-    width: 8%;
-}
 .empty {
     border: 0px;
 }
@@ -214,15 +205,6 @@ div.planned-block-end {
 div.draggable-block .handle {
     height: 30%;
     cursor: move;
-}
-.block30 span.handle {
-    width: 100%;
-}
-.block60 span.handle {
-    width: 50%;
-}
-.block120 span.handle {
-    width: 1em;
 }
 .step_content .closer {
     display: block;

@@ -204,9 +204,10 @@
             for (var i = 0; i < blocksArray.length; i++) {
                 $('<div/>', {
                     'id': 'block' + blocksArray[i].value,
-                    'class': 'draggable-block template block' + blocksArray[i].value,
+                    'class': 'draggable-block template',
                     'data-value': blocksArray[i].value,
-                    'html': '<span> <i class = "fa fa-arrows handle" ></i></span>'
+                    'html': '<span> <i class = "fa fa-arrows handle" ></i></span>',
+                    'style': 'width:' + (blocksArray[i].value / _options.step) * 2 + '%',
                 }).appendTo(eBlocks);
             }
             return this;
@@ -413,9 +414,18 @@
                 _options.disabled = false;
             }
 
+
             if (!userOptions) {
                 return _options;
             }
+
+
+            if (typeof(userOptions.blocksToolbar) !== 'undefined') {
+                if (typeof(userOptions.blocksToolbar) === 'string') {
+                    userOptions.blocksToolbar = JSON.parse(userOptions.blocksToolbar);
+                }
+            }
+
             for (var optionKey in _options) {
                 if (optionKey in userOptions) {
                     switch (typeof _options[optionKey]) {
@@ -827,6 +837,11 @@
          * @return {Object} self instance of MrDad class
          */
         this.addPeriods = function(periodsArray) {
+
+            if (typeof(periodsArray) === 'string') {
+                periodsArray = JSON.parse(periodsArray);
+            }
+
             for (var i = 0; i < periodsArray.length; i++) {
                 _addPeriod(periodsArray[i][0], periodsArray[i][1]);
             }
@@ -840,6 +855,9 @@
          * @return {Object} self instance of MrDad class
          */
         this.addBlocks = function(blocksArray) {
+            if (typeof(blocksArray) === 'string') {
+                blocksArray = JSON.parse(blocksArray);
+            }
             var blocksToAdd = [];
             for (var i = 0; i < blocksArray.length; i++) {
                 var startStep = blocksArray[i][0];

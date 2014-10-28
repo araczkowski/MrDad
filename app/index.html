@@ -96,28 +96,16 @@
                     var hours = Math.floor(Math.abs(steps) / 60);
                     return Math.abs(steps) % 60 === 0 ? ((hours < 10 && hours >= 0) ? '0' : '') + hours : '';
                 },
-                blocksToolbar: [{
-                    value: 30
-                }, {
-                    value: 60
-                }, {
-                    value: 120
-                }],
+                blocksToolbar: '[{"value": 30}, {"value": 60}, {"value": 150}]',
                 mode: 'ranges'
             });
 
             // test data; TODO - definition from the DB
-            mrdad.addPeriods([
-                [660, 90],
-                [990, 120]
-            ]);
+            mrdad.addPeriods('[[660, 90],[990, 120]]');
 
 
             // test data; TODO - definition from the DB
-            mrdad.addBlocks([
-                [660, 30],
-                [990, 60]
-            ]);
+            mrdad.addBlocks('[[660, 30],[990, 60]]');
 
             // to have output info after change
             mrdad.setOnHandleSlideCallback(outInfo);
