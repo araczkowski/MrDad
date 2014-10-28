@@ -80,22 +80,15 @@
 
             }
 
-            // inicialization
+            // inicialization - test from APEX (string insted of objects)
             mrdad = new MrDad('#slider', {
                 min: 0,
                 max: 1440,
                 step: 30,
                 gap: 150,
                 newlength: 90,
-                handleLabelDispFormat: function(steps) {
-                    var hours = Math.floor(Math.abs(steps) / 60);
-                    var minutes = Math.abs(steps) % 60;
-                    return ((hours < 10 && hours >= 0) ? '0' : '') + hours + ':' + ((minutes < 10 && minutes >= 0) ? '0' : '') + minutes;
-                },
-                stepLabelDispFormat: function(steps) {
-                    var hours = Math.floor(Math.abs(steps) / 60);
-                    return Math.abs(steps) % 60 === 0 ? ((hours < 10 && hours >= 0) ? '0' : '') + hours : '';
-                },
+                handleLabelDispFormat: 'function(steps) {var hours = Math.floor(Math.abs(steps) / 60); var minutes = Math.abs(steps) % 60; return ((hours < 10 && hours >= 0) ? "0" : "") + hours + ":" + ((minutes < 10 && minutes >= 0) ? "0" : "") + minutes; }',
+                stepLabelDispFormat: 'function(steps) {var hours = Math.floor(Math.abs(steps) / 60);return Math.abs(steps) % 60 === 0 ? ((hours < 10 && hours >= 0) ? "0" : "") + hours : ""; }',
                 blocksToolbar: '[{"value": 30}, {"value": 60}, {"value": 150}]',
                 mode: 'ranges'
             });

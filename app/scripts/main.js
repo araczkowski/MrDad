@@ -173,7 +173,9 @@
                     var steps = Number(endId) / 30 - Number(startId) / 30;
                     for (var i = 0; i < steps; i++) {
                         var selector = '#step_' + (Number(startId) / 30 + 1 + i);
-                        $(selector).addClass('empty');
+                        if (!$(selector).hasClass('planned-block-body')) {
+                            $(selector).addClass('empty');
+                        }
                     }
                 });
                 _options.mode = 'blocks';
@@ -423,6 +425,20 @@
             if (typeof(userOptions.blocksToolbar) !== 'undefined') {
                 if (typeof(userOptions.blocksToolbar) === 'string') {
                     userOptions.blocksToolbar = JSON.parse(userOptions.blocksToolbar);
+                }
+            }
+
+            if (typeof(userOptions.handleLabelDispFormat) !== 'undefined') {
+                if (typeof(userOptions.handleLabelDispFormat) === 'string') {
+                    eval('var fn = ' + userOptions.handleLabelDispFormat);
+                    userOptions.handleLabelDispFormat = fn;
+                }
+            }
+
+            if (typeof(userOptions.stepLabelDispFormat) !== 'undefined') {
+                if (typeof(userOptions.stepLabelDispFormat) === 'string') {
+                    eval('var fn = ' + userOptions.stepLabelDispFormat);
+                    userOptions.stepLabelDispFormat = fn;
                 }
             }
 
