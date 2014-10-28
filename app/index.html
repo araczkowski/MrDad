@@ -39,6 +39,79 @@
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
     <script>
+        $(function() {
+
+            // output
+            function outInfo() {
+                var con = $('textarea#console');
+                var out = {};
+
+                if ($('input[type=radio][name=rangeWorkMode]:checked').val() === 'ranges') {
+                    var _mrdad = mrdad.getPeriods();
+                    var ranges = [];
+                    if (_mrdad.length > 0) {
+                        _mrdad.forEach(function(_interval) {
+                            var range = {};
+                            range.id = _interval.getId();
+                            range.start = _interval.getAbscissas()[0];
+                            range.value = _interval.getAbscissas()[1] - _interval.getAbscissas()[0];
+                            ranges.push(range);
+                        });
+                        out.ranges = ranges;
+                    }
+
+                } else {
+                    var _blocks = $('.planned-block-start');
+                    var blocks = [];
+
+                    if (_blocks.length > 0) {
+                        _blocks.each(function(i, e) {
+                            var block = {};
+                            block.id = e.getAttribute('id');
+                            block.start = e.getAttribute('data-start');
+                            block.value = e.getAttribute('data-value');
+                            blocks.push(block);
+                        });
+                    }
+                    out.blocks = blocks;
+                }
+                con.val(JSON.stringify(out, undefined, 4));
+
+            }
+
+            // inicialization
+            var mrdad = new MrDad('#slider');
+
+            // test data; TODO - definition from the DB
+            mrdad.addPeriods([
+                [660, 90],
+                [990, 120]
+            ]);
+
+            // test data; TODO - definition from the DB
+            mrdad.addBlocks([
+                [660, 30],
+                [990, 60]
+            ]);
+
+            // to have output info after change
+            mrdad.setOnHandleSlideCallback(outInfo);
+            mrdad.setOnHandleMouseenterCallback(outInfo);
+            mrdad.setAddBlockCallback(outInfo);
+            mrdad.setDeleteBlockCallback(outInfo);
+            mrdad.setAddPeriodCallback(outInfo);
+            mrdad.setDeletePeriodCallback(outInfo);
+
+
+            // after select the working mode
+            $('input[type=radio][name=rangeWorkMode]').change(function() {
+                mrdad.setMode(this.value);
+            });
+
+            //preselect the mode after load
+            mrdad.setMode('ranges');
+
+        });
     </script>
 </body>
 
