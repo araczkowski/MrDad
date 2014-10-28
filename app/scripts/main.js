@@ -831,6 +831,7 @@
                 _addPeriod(periodsArray[i][0], periodsArray[i][1]);
             }
             _rebuild();
+            _setMode(_options.mode);
             return this;
         };
         /**
@@ -853,6 +854,7 @@
                 _addBlock(blocksToAdd, value);
                 blocksToAdd = [];
             }
+            _setMode(_options.mode);
             return this;
         };
 

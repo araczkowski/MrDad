@@ -39,6 +39,7 @@
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
     <script>
+        var mrdad;
         $(function() {
 
             // output
@@ -80,13 +81,37 @@
             }
 
             // inicialization
-            var mrdad = new MrDad('#slider');
+            mrdad = new MrDad('#slider', {
+                min: 0,
+                max: 1440,
+                step: 30,
+                gap: 150,
+                newlength: 90,
+                handleLabelDispFormat: function(steps) {
+                    var hours = Math.floor(Math.abs(steps) / 60);
+                    var minutes = Math.abs(steps) % 60;
+                    return ((hours < 10 && hours >= 0) ? '0' : '') + hours + ':' + ((minutes < 10 && minutes >= 0) ? '0' : '') + minutes;
+                },
+                stepLabelDispFormat: function(steps) {
+                    var hours = Math.floor(Math.abs(steps) / 60);
+                    return Math.abs(steps) % 60 === 0 ? ((hours < 10 && hours >= 0) ? '0' : '') + hours : '';
+                },
+                blocksToolbar: [{
+                    value: 30
+                }, {
+                    value: 60
+                }, {
+                    value: 120
+                }],
+                mode: 'ranges'
+            });
 
             // test data; TODO - definition from the DB
             mrdad.addPeriods([
                 [660, 90],
                 [990, 120]
             ]);
+
 
             // test data; TODO - definition from the DB
             mrdad.addBlocks([
@@ -107,10 +132,6 @@
             $('input[type=radio][name=rangeWorkMode]').change(function() {
                 mrdad.setMode(this.value);
             });
-
-            //preselect the mode after load
-            mrdad.setMode('ranges');
-
         });
     </script>
 </body>
