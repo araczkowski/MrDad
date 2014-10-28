@@ -3,12 +3,10 @@ MultiRange & DragAndDrop (MrDad)
 
 Extends jquery-ui slider widget to include multiple ranges and combine it with the blocks drag & drop interaction.
 
-Live example at jsFiddle http://jsfiddle.net/araczkowski/et4dmz1w/embedded/result/ http://jsfiddle.net/araczkowski/et4dmz1w/
+Live example at jsFiddle http://jsfiddle.net/araczkowski/et4dmz1w/embedded/result/
 
 TODO
 ===========================
-
-***tests in Browsers (IE, FireFox, Chrome)***
 
 ***integration with APEX (plugin)***
 
