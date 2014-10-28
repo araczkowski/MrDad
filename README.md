@@ -5,10 +5,16 @@ Extends jquery-ui slider widget to include multiple ranges and combine it with t
 
 Live example at jsFiddle http://jsfiddle.net/araczkowski/et4dmz1w/embedded/result/
 
+
+![alt tag](https://raw.githubusercontent.com/araczkowski/MrDad/master/app/images/blocks.png)
+![alt tag](https://raw.githubusercontent.com/araczkowski/MrDad/master/app/images/ranges.png)
+
+
 TODO
 ===========================
 
 ***integration with APEX (plugin)***
+
 
 
 How To Start (to develop the plugin)

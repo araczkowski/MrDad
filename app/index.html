@@ -47,35 +47,37 @@
                 var con = $('textarea#console');
                 var out = {};
 
-                if ($('input[type=radio][name=rangeWorkMode]:checked').val() === 'ranges') {
-                    var _mrdad = mrdad.getPeriods();
-                    var ranges = [];
-                    if (_mrdad.length > 0) {
-                        _mrdad.forEach(function(_interval) {
-                            var range = {};
-                            range.id = _interval.getId();
-                            range.start = _interval.getAbscissas()[0];
-                            range.value = _interval.getAbscissas()[1] - _interval.getAbscissas()[0];
-                            ranges.push(range);
-                        });
-                        out.ranges = ranges;
-                    }
+                //if ($('input[type=radio][name=rangeWorkMode]:checked').val() === 'ranges') {
+                var _mrdad = mrdad.getPeriods();
+                var ranges = [];
+                if (_mrdad.length > 0) {
+                    _mrdad.forEach(function(_interval) {
+                        var range = {};
+                        range.id = _interval.getId();
+                        range.start = _interval.getAbscissas()[0];
+                        range.value = _interval.getAbscissas()[1] - _interval.getAbscissas()[0];
+                        ranges.push(range);
+                    });
 
-                } else {
-                    var _blocks = $('.planned-block-start');
-                    var blocks = [];
-
-                    if (_blocks.length > 0) {
-                        _blocks.each(function(i, e) {
-                            var block = {};
-                            block.id = e.getAttribute('id');
-                            block.start = e.getAttribute('data-start');
-                            block.value = e.getAttribute('data-value');
-                            blocks.push(block);
-                        });
-                    }
-                    out.blocks = blocks;
                 }
+
+                // } else {
+                var _blocks = $('.planned-block-start');
+                var blocks = [];
+
+                if (_blocks.length > 0) {
+                    _blocks.each(function(i, e) {
+                        var block = {};
+                        block.id = e.getAttribute('id');
+                        block.start = e.getAttribute('data-start');
+                        block.value = e.getAttribute('data-value');
+                        blocks.push(block);
+                    });
+                }
+                out.blocks = blocks;
+                // }
+
+                out.ranges = ranges;
                 con.val(JSON.stringify(out, undefined, 4));
 
             }
