@@ -85,7 +85,7 @@ MrDad.addPeriods = function(periodsArray) {}
  * @return {Object} self instance of MrDad class
  */
 
-MrDad.addBlocks = function(periodsArray) {}
+MrDad.addBlocks = function(blocksArray) {}
 ```
 
 
